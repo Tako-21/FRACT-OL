@@ -22,7 +22,7 @@ MLX = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@echo [CC] $<
-	$(CC) $(CFLAGS) $(IFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
+	$(CC) $(CFLAGS) $(IFLAGS) -I/usr/include -Imlx_linux -c $< -o $@
 
 all : $(OBJ_PATH) $(NAME)
 
