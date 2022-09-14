@@ -6,38 +6,49 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:39:36 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/13 18:13:41 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/14 21:43:07 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TOOLS_H
 # define TOOLS_H
 
-#include <unistd.h>
+# include <unistd.h>
 
 /* Hexadecimal code for color use  */
 # define RED    0xFF0000
 # define GREEN  0x00FF00
 # define BLUE   0x0000FF
 # define BLACK   0x000000
+# define ORANGE 0xff8000
 
-/* Iteration of Z which will partly fix the quality of
-   the final rendering  */
-# define MAX_ITERATION 80
+/* Mouse code for mlx_instance  */
+# define SCROLL_UP 4
+# define SCROLL_DOWN 5
+
+/* Key code for mlx_instance  */
+# define KEY_UP 65362
+# define KEY_RIGHT 65363
+# define KEY_DOWN 65364
+# define KEY_LEFT 65361
+# define KEY_PG_UP 65365
+# define KEY_PG_DOWN 65366
 
 /* Window dimension values  */
-# define WIDTH 270 // Largeur de la fentre
-# define HEIGHT 240 // Hauteur de la fenetre
+# define WIDTH 900 // Largeur de la fentre
+# define HEIGHT 900 // Hauteur de la fenetre
 
 /* Definition of the boolean type  */
-typedef enum e_bool
+typedef enum e_move
 {
-	TRUE,
-	FALSE
-}			t_bool;
+	RIGHT,
+	LEFT,
+	UP,
+	DOWN
+}			t_move;
 
 /* Definition of the image data structure  */
-typedef struct	s_img {
+typedef struct s_img {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -45,11 +56,26 @@ typedef struct	s_img {
 	int		endian;
 }			t_img;
 
+typedef struct s_complex {
+	double		x;
+	double		y;
+	double		max_r;
+	double		min_r;
+	double		max_i;
+	double		min_i;
+	double		z_r;
+	double		z_i;
+	double		c_r;
+	double		c_i;
+	__uint16_t	max_iteration;
+}	t_complex;
+
 /* Definition of the mlx_instance structure and the data structure  */
-typedef struct	s_data {
-	void	*mlx;
-	void	*win;
-	t_img	img;
-}			t_data;
+typedef struct s_data {
+	void		*mlx;
+	void		*win;
+	t_img		img;
+	t_complex	complex;
+}				t_data;
 
 #endif
