@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:41:42 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/14 21:49:34 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/15 20:52:37 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,12 @@ void	is_in_mandelbrot_set(t_data *data)
 		index++;
 	}
 	if (index == data->complex.max_iteration)
-		my_mlx_pixel_put(&data->img, data->complex.x, data->complex.y, BLACK);
+		my_mlx_pixel_put(&data->img, data->complex.x, data->complex.y, RED);
+	else if (index >= 12)
+		my_mlx_pixel_put(&data->img, data->complex.x, data->complex.y, 0xffc0cb);
 	else
-		my_mlx_pixel_put(&data->img, data->complex.x, data->complex.y, create_trgb(0, 0, index*321/data->complex.max_iteration, 0));
+		my_mlx_pixel_put(&data->img, data->complex.x, data->complex.y, BLACK);// else
+		// my_mlx_pixel_put(&data->img, data->complex.x, data->complex.y, create_trgb(0, 0, index*321/data->complex.max_iteration, 0));
 
 }
 
@@ -125,6 +128,11 @@ void	render_mandelbrot(t_data *data)
 
 void	movement(t_data *data, double move, t_move MOVEMENT)
 {
+	double	center_r;
+	double	center_i;
+
+	center_r = data->complex.min_r - data->complex.max_r;
+	center_i = data->complex.min_i - data->complex.max_i;
 	if (MOVEMENT == RIGHT)
 	{
 		data->complex.min_r += move;
@@ -145,6 +153,27 @@ void	movement(t_data *data, double move, t_move MOVEMENT)
 		data->complex.max_i += move;
 		data->complex.min_i += move;
 	}
+	else if (MOVEMENT == TMP_SCROLL)
+	{
+		printf("MOVEMENT : %d\n", MOVEMENT);
+		data->complex.min_r = data->complex.max_r + move * center_r;
+		data->complex.max_r = data->complex.max_r + center_r - move * center_r / 2;
+
+		data->complex.min_i = data->complex.max_i + move * center_i;
+		data->complex.max_i = data->complex.max_i + center_i - move * center_i / 2;
+
+		// data->complex.min_r = data->complex.max_r + move * center_r;
+		// data->complex.max_r = data->complex.max_r + center_r - move * center_r / 2;
+
+		// data->complex.min_i = data->complex.max_i + move * center_i;
+		// data->complex.max_i = data->complex.max_i + center_i - move * center_i / 2;
+	}
+	// else if (MOVEMENT == TMP_SCROLL_DOWN)
+	// {
+	// 	data->complex.min_i = data->complex.max_r + move * (data->complex.min_r - data->complex.max_r);
+	// 	data->complex.max_r = data->complex.max_r + ((data->complex.min_r - data->complex.max_r)
+	// 						- move * (data->complex.min_r - data->complex.max_r)) / 2;
+	// }
 	render_mandelbrot(data);
 }
 
@@ -156,7 +185,7 @@ void	movement(t_data *data, double move, t_move MOVEMENT)
 // 	{
 // 		zoom = 0.2;
 // 		render_mandelbrot(data, zoom);
-// 	}
+// 	1}
 // 	if (keycode == SCROLL_DOWN)
 // 	{
 // 		zoom = -0.2;
@@ -179,15 +208,25 @@ int	key_hook(int keycode, t_data *data)
 		movement(data, speed, RIGHT);
 	else if (keycode == KEY_LEFT)
 		movement(data, speed, LEFT);
-	else if (keycode == KEY_PG_UP)
+	else if (keycode == 65451) // KEY_PG_DOWN
 	{
 		data->complex.max_iteration += 5;
 		render_mandelbrot(data);
 	}
-	else if (keycode == KEY_PG_DOWN)
+	else if (keycode == 65453) // KEY_PG_DOWN
 	{
 		data->complex.max_iteration -= 5;
 		render_mandelbrot(data);
+	}
+	else if (keycode == TMP_SCROLL_UP) // SCROLL_UP
+	{
+		speed = 1.25;
+		movement(data, speed, TMP_SCROLL);
+	}
+	else if (keycode == TMP_SCROLL_DOWN) // SCROLL_DOWN
+	{
+		speed = 1.5;
+		movement(data, speed, TMP_SCROLL);
 	}
 	return (21);
 }
@@ -209,6 +248,7 @@ int	main(void)
 								&data.img.endian);
 	mlx_hook(data.win, 2, 1L<<0, close_window_key_esc, &data);  // To close window when esc is pressed.
 	mlx_hook(data.win, 17, 0, close_window_red_cross, &data); // To close window when the red cross is clicked.
+	mlx_hook(data.win, 6, 1L<<6, motion_hook, &data); // To print the current position of the mouse.
 	mlx_key_hook(data.win, key_hook, &data);
 	render_mandelbrot(&data);
 	mlx_loop(data.mlx);

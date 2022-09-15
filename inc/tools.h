@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:39:36 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/14 21:43:07 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/15 19:43:56 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@
 # define KEY_LEFT 65361
 # define KEY_PG_UP 65365
 # define KEY_PG_DOWN 65366
+
+# define TMP_SCROLL_UP 105
+# define TMP_SCROLL_DOWN 111
+# define TMP_SCROLL 21
 
 /* Window dimension values  */
 # define WIDTH 900 // Largeur de la fentre
