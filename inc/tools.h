@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:39:36 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/15 19:43:56 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/16 16:17:07 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,19 @@ typedef struct s_complex {
 	__uint16_t	max_iteration;
 }	t_complex;
 
+
+typedef struct s_mouse {
+	int	x;
+	int	y;
+}	t_mouse;
+
 /* Definition of the mlx_instance structure and the data structure  */
 typedef struct s_data {
 	void		*mlx;
 	void		*win;
 	t_img		img;
 	t_complex	complex;
+	t_mouse		mouse_pos;
 }				t_data;
 
 #endif

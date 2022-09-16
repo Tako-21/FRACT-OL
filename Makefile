@@ -12,7 +12,11 @@ OBJ_PATH = obj/
 IFLAGS = -g3 -I $(INC_PATH) -I ./mlx_linux
 
 SRCS = $(addprefix $(DSRC),\
-		main.c)
+		main.c\
+		fractal_display.c\
+		hook_management.c\
+		movement.c\
+		window_management.c)
 
 OBJ = ${SRCS:.c=.o}
 
