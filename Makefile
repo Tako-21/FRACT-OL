@@ -1,44 +1,52 @@
 NAME = fract-ol
 
-CC = cc
+CC		= cc
+INC_PATH = inc/
+CFLAGS	= $(IFLAGS)
+IFLAGS = -g3 -I $(INC_PATH) -I $(MLX_PATH)
+
+
 
 
 SRC_PATH = src/
-INC_PATH = inc/
-OBJ_PATH = obj/
-
-# CFLAGS = -Wall -Werror -Wextra
-
-IFLAGS = -g3 -I $(INC_PATH) -I ./mlx_linux
-
 SRCS = $(addprefix $(DSRC),\
 		main.c\
 		fractal_display.c\
 		hook_management.c\
-		movement.c\
+		shifting.c\
+		iteration_mandelbrot.c\
+		zoom_control.c\
 		window_management.c)
 
-OBJ = ${SRCS:.c=.o}
 
-OBJS = $(addprefix $(OBJ_PATH), $(OBJ))
+OBJ_PATH = obj/
+OBJ		= ${SRCS:.c=.o}
+OBJS	= $(addprefix $(OBJ_PATH), $(OBJ))
 
-MLX = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+MLX_FLAGS	= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+MLX_PATH	= ./mlx_linux/
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@echo [CC] $<
-	$(CC) $(CFLAGS) $(IFLAGS) -I/usr/include -Imlx_linux -c $< -o $@
+	@$(CC) $(CFLAGS) $(IFLAGS) -I/usr/include -Imlx_linux -c $< -o $@
 
 all : $(OBJ_PATH) $(NAME)
 
 $(NAME) : $(OBJS)
-	@make -C ./mlx_linux
-	$(CC) $(CFLAGS) $(IFLAGS) $(OBJS) $(MLX) -o $(NAME)
+	@echo "Compiling MiniLibX..."
+	@make -sC $(MLX_PATH)
+	@echo "Compiling Fract-ol"
+	@$(CC) $(CFLAGS) $(IFLAGS) $(OBJS) $(MLX_FLAGS) -o $(NAME)
+	@echo "Fract-ol ready to be executed."
 
 clean :
-		rm -rf $(OBJS)
+	@echo "Removing objects files..."
+	@make clean -sC $(MLX_PATH)
+	@rm -rf $(OBJS)
 
 fclean : clean
-		rm -rf $(NAME)
+	@echo "Removing binary file..."
+	@rm -rf $(NAME)
 
 re : fclean $(NAME)
 

@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window_management.h                                :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 14:50:24 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/19 13:53:19 by mmeguedm         ###   ########.fr       */
+/*   Created: 2022/09/13 10:51:47 by mmeguedm          #+#    #+#             */
+/*   Updated: 2022/09/13 12:27:13 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WINDOW_MANAGEMENT_H
-# define WINDOW_MANAGEMENT_H
+int	recurs_mandelbrot(int z0)
+{
 
-#include <tools.h>
+}
 
-int		close_window_key_esc(int keycode, t_data *mlx);
-int		close_window_red_cross(t_data *mlx);
-
-#endif
+int	main(void)
+{
+	recurs_mandelbrot()
+}

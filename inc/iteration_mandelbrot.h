@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window_management.h                                :+:      :+:    :+:   */
+/*   iteration_mandelbrot.h                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 14:50:24 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/19 13:53:19 by mmeguedm         ###   ########.fr       */
+/*   Created: 2022/09/19 21:02:58 by mmeguedm          #+#    #+#             */
+/*   Updated: 2022/09/19 21:45:34 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WINDOW_MANAGEMENT_H
-# define WINDOW_MANAGEMENT_H
+#ifndef ITERATION_MANDELBROT_H
+# define ITERATION_MANDELBROT_H
 
-#include <tools.h>
+#include "tools.h"
 
-int		close_window_key_esc(int keycode, t_data *mlx);
-int		close_window_red_cross(t_data *mlx);
+int	more_iteration(t_data *data, double iteration);
+int	less_iteration(t_data *data, double iteration);
 
 #endif

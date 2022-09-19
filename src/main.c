@@ -3,22 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:41:42 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/16 16:06:56 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/19 22:02:19 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "tools.h"
+#include "zoom_control.h"
 #include <stdio.h>
 #include </usr/include/X11/X.h>
 #include <stdlib.h>
-#include <fractal_display.h>
-#include <window_management.h>
-#include <hook_management.h>
-#include <movement.h>
+#include "fractal_display.h"
+#include "window_management.h"
+#include "hook_management.h"
+#include "shifting.h"
 
 int	main(void)
 {
@@ -37,8 +38,9 @@ int	main(void)
 								&data.img.endian);
 	mlx_hook(data.win, 2, 1L<<0, close_window_key_esc, &data);  // To close window when esc is pressed.
 	mlx_hook(data.win, 17, 0, close_window_red_cross, &data); // To close window when the red cross is clicked.
-	mlx_hook(data.win, 6, 1L<<6, get_current_position_mouse, &data); // To get the current position of the mouse.
+	// mlx_hook(data.win, 6, 1L<<6, get_current_position_mouse, &data); // To get the current position of the mouse.
 	mlx_key_hook(data.win, key_hook, &data);
+	mlx_mouse_hook(data.win, zoom_control, &data);
 	render_mandelbrot(&data);
 	mlx_loop(data.mlx);
 	// mlx_mouse_hook(data.win, get_current_position_mouse, &data); // To get the current mouse_pos.

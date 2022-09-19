@@ -1,7 +1,7 @@
 {
 	"files.associations": {
 		"stdio.h": "c",
-		"movement.h": "c",
+		"shifting.h": "c",
 		"tools.h": "c",
 		"mlx.h": "c",
 		"hook_management.h": "c"

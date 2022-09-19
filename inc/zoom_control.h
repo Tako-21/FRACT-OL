@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   movement.h                                         :+:      :+:    :+:   */
+/*   zoom_control.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/16 14:47:00 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/16 16:11:25 by mmeguedm         ###   ########.fr       */
+/*   Created: 2022/09/19 21:11:09 by mmeguedm          #+#    #+#             */
+/*   Updated: 2022/09/19 21:58:20 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MOVEMENT_H
-#define MOVEMENT_H
+#ifndef ZOOM_CONTROL_H
+# define ZOOM_CONTROL_H
 
-#include <tools.h>
+# include "tools.h"
 
-void	movement(t_data *data, double move, t_move MOVEMENT);
-int		zoom_control(t_data *data, t_move MOVEMENT);
-int		get_current_position_mouse(int	x, int y, t_data *mlx);
+void	zoom(t_data *data, double zoom);
+int	zoom_control(t_data *data, t_move MOVEMENT);
 
 #endif
