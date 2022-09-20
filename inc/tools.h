@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:39:36 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/16 16:17:07 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/20 21:13:03 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,24 @@
 # define KEY_LEFT 65361
 # define KEY_PG_UP 65365
 # define KEY_PG_DOWN 65366
-
-# define TMP_SCROLL_UP 105
-# define TMP_SCROLL_DOWN 111
-# define TMP_SCROLL 21
+# define KEY_PLUS 65451
+# define KEY_MINUS 65453
 
 /* Window dimension values  */
 # define WIDTH 900 // Largeur de la fentre
 # define HEIGHT 900 // Hauteur de la fenetre
 
-/* Definition of the boolean type  */
-typedef enum e_move
+/*	Code for fractal set  */
+# define MANDELBROT	0
+# define MULTIBROT	1
+# define JULIA		2
+
+/*	Definition of the boolean type  */
+typedef enum s_bool
 {
-	RIGHT,
-	LEFT,
-	UP,
-	DOWN
-}			t_move;
+	FALSE = 3,
+	TRUE
+}	t_bool;
 
 /* Definition of the image data structure  */
 typedef struct s_img {
@@ -61,8 +62,6 @@ typedef struct s_img {
 }			t_img;
 
 typedef struct s_complex {
-	double		x;
-	double		y;
 	double		max_r;
 	double		min_r;
 	double		max_i;
@@ -71,6 +70,7 @@ typedef struct s_complex {
 	double		z_i;
 	double		c_r;
 	double		c_i;
+	double	power;
 	__uint16_t	max_iteration;
 }	t_complex;
 
@@ -84,9 +84,21 @@ typedef struct s_mouse {
 typedef struct s_data {
 	void		*mlx;
 	void		*win;
+	char		proc;
 	t_img		img;
 	t_complex	complex;
 	t_mouse		mouse_pos;
 }				t_data;
+
+/* Function pointer required to correspond set and function.  */
+typedef	int(*t_fp_fractal_set)();
+
+/*	Array of correspondence between fractal set and args.  */
+typedef struct	s_op_set
+{
+	char				*fractal_set;
+	t_fp_fractal_set	fractal_fp;
+}						t_op_set;
+
 
 #endif

@@ -6,17 +6,18 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 21:10:17 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/19 22:37:55 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/20 19:20:24 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "zoom_control.h"
 #include "tools.h"
 #include "shifting.h"
-#include "fractal_display.h"
+#include "render.h"
 
 #include <stdio.h>
 
-void	zoom(t_data *data, double zoom)
+static void	zoom(t_data *data, double zoom)
 {
 	double	center_r;
 	double	center_i;
@@ -27,7 +28,6 @@ void	zoom(t_data *data, double zoom)
 	data->complex.min_r = data->complex.max_r + zoom * center_r;
 	data->complex.min_i = data->complex.min_i + (center_i - zoom * center_i) / 2;
 	data->complex.max_i = data->complex.min_i + zoom * center_i;
-	render_mandelbrot(data);
 }
 
 int	zoom_control(int keycode, int x, int y, t_data *data)
@@ -37,8 +37,8 @@ int	zoom_control(int keycode, int x, int y, t_data *data)
 
 	if (keycode == SCROLL_UP)
 	{
-		zoom(data, 0.5);
-		printf("max_r : %f\tmin_r : %f\nmax_i : %f\tmin_i : %f\n", data->complex.max_r, data->complex.min_r, data->complex.max_i, data->complex.min_i);
+		zoom(data, 0.75);
+		//printf("max_r : %f\tmin_r : %f\nmax_i : %f\tmin_i : %f\n", data->complex.max_r, data->complex.min_r, data->complex.max_i, data->complex.min_i);
 		x -= WIDTH / 2;
 		y -= HEIGHT / 2;
 		if (x < 0)
@@ -51,7 +51,9 @@ int	zoom_control(int keycode, int x, int y, t_data *data)
 			down_move(data, (double)y / HEIGHT);
 	}
 	else if (keycode == SCROLL_DOWN)
-		zoom(data, 2);
-	render_mandelbrot(data);
+	{
+		zoom(data, 1.5);
+		render_multibrot(data, 0);
+	}
 	return (21);
 }

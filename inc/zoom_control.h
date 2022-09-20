@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 21:11:09 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/19 21:58:20 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/20 17:40:07 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "tools.h"
 
-void	zoom(t_data *data, double zoom);
-int	zoom_control(t_data *data, t_move MOVEMENT);
+static void	zoom(t_data *data, double zoom);
+int	zoom_control(int keycode, int x, int y, t_data *data);
 
 #endif

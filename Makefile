@@ -2,7 +2,7 @@ NAME = fract-ol
 
 CC		= cc
 INC_PATH = inc/
-CFLAGS	= $(IFLAGS)
+CFLAGS	= $(IFLAGS) -O3
 IFLAGS = -g3 -I $(INC_PATH) -I $(MLX_PATH)
 
 
@@ -11,10 +11,13 @@ IFLAGS = -g3 -I $(INC_PATH) -I $(MLX_PATH)
 SRC_PATH = src/
 SRCS = $(addprefix $(DSRC),\
 		main.c\
-		fractal_display.c\
+		render_multibrot.c\
+		render_mandelbrot.c\
+		render_julia.c\
 		hook_management.c\
 		shifting.c\
 		iteration_mandelbrot.c\
+		utils.c\
 		zoom_control.c\
 		window_management.c)
 

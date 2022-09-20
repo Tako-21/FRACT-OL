@@ -4,6 +4,11 @@
 		"shifting.h": "c",
 		"tools.h": "c",
 		"mlx.h": "c",
-		"hook_management.h": "c"
+		"hook_management.h": "c",
+		"zoom_control.h": "c",
+		"*.tcc": "c",
+		"unordered_map": "c",
+		"numeric": "c",
+		"ostream": "c"
 	}
 }
