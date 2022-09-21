@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:59:53 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/21 15:14:24 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/21 20:09:41 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "utils.h"
 #include "window_management.h"
 #include "hook_management.h"
-#include "zoom_control.h"
+#include "zoom_mouse_hook.h"
 
 t_fp_fractal_set	get_set(t_data *data, char **argv)
 {
@@ -54,7 +54,7 @@ void	init_complex_plane(t_data *data)
 	data->complex.max_r = 1.0;
 	data->complex.min_r = -2.0;
 	data->complex.min_i = -1.5;
-	data->complex.power = 2;
+	data->complex.power = 1;
 	data->complex.max_i = data->complex.min_i
 		+ (data->complex.max_r - data->complex.min_r) * (HEIGHT / WIDTH);
 	data->complex.max_iteration = 40;
@@ -64,10 +64,12 @@ void	init_hook(t_data *data)
 {
 	mlx_hook(data->win, 2, 1L << 0, close_window_key_esc, data);
 	mlx_hook(data->win, 17, 0, close_window_red_cross, data);
-	mlx_key_hook(data->win, key_hook, data);
-	mlx_mouse_hook(data->win, zoom_control, data);
+	mlx_key_hook(data->win, move_key_hook, data);
+	mlx_key_hook(data->win, move_key_hook, data);
+	mlx_mouse_hook(data->win, zoom_mouse_hook, data);
 }
 
+/* Implement a new function pointer pointing at the appropriate key/mouse_hook  */
 void	init(t_data *data, char **argv, int argc)
 {
 	t_fp_fractal_set	exe_fractal;
@@ -77,11 +79,12 @@ void	init(t_data *data, char **argv, int argc)
 	else  if (argc < 2)
 		exit_error(ERR_ARG_LOW);
 	data->exe_fractal = get_set(data, argv);
+	//data->exe_key_hook = get_hook(data);
 	if (!data->exe_fractal)
 		exit_error(ERR_NAME);
 	data->program_name = argv[1];
 	init_mlx(data);
-	init_hook(data);
 	init_complex_plane(data);
-	data->exe_fractal(data, 0.0);
+	init_hook(data);
+	data->exe_fractal(data);
 }

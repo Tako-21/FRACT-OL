@@ -20,7 +20,7 @@ SRCS = $(addprefix $(DSRC),\
 		shifting.c\
 		iteration_mandelbrot.c\
 		utils.c\
-		zoom_control.c\
+		zoom_mouse_hook.c\
 		window_management.c)
 
 

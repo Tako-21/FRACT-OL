@@ -47,7 +47,6 @@ static double	get_z_r(t_data *data)
 	return (z_r);
 }
 
-
 static double	get_z_i(t_data *data, double tmp_z_r)
 {
 	double	z_i;

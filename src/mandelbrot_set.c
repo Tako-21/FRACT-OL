@@ -47,7 +47,6 @@ int	mandelbrot_set(t_data *data)
 	unsigned int	x;
 	unsigned int	y;
 
-	printf("max_r : %f\tmin_r : %f\nmax_i : %f\tmin_i : %f\n\n", data->complex.max_r, data->complex.min_r, data->complex.max_i, data->complex.min_i);
 	x = 0;
 	while (++x < WIDTH)
 	{
@@ -59,7 +58,6 @@ int	mandelbrot_set(t_data *data)
 			is_in_mandelbrot_set(data, x, y);
 		}
 	}
-
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 	return (21);
 }

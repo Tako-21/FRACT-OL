@@ -5,7 +5,7 @@
 		"tools.h": "c",
 		"mlx.h": "c",
 		"hook_management.h": "c",
-		"zoom_control.h": "c",
+		"zoom_mouse_hook.h": "c",
 		"*.tcc": "c",
 		"unordered_map": "c",
 		"numeric": "c",

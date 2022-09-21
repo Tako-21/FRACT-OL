@@ -6,13 +6,13 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:41:42 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/21 15:07:44 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/21 19:06:04 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "tools.h"
-#include "zoom_control.h"
+#include "zoom_mouse_hook.h"
 #include "exit_error.h"
 #include <stdio.h>
 #include </usr/include/X11/X.h>

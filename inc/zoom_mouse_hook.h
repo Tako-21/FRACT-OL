@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zoom_control.h                                     :+:      :+:    :+:   */
+/*   zoom_mouse_hook.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOOM_CONTROL_H
-# define ZOOM_CONTROL_H
+#ifndef zoom_mouse_hook_H
+# define zoom_mouse_hook_H
 
 # include "tools.h"
 
 static void	zoom(t_data *data, double zoom);
-int	zoom_control(int keycode, int x, int y, t_data *data);
+int	zoom_mouse_hook(int keycode, int x, int y, t_data *data);
 
 #endif

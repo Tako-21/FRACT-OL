@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:47:00 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/21 14:43:11 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/21 16:50:33 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "tools.h"
 
 /* Function pointer needed by the array of correspondence  */
-typedef	int(*t_fp_movement)(t_data *data, double distance);
+typedef	int(*t_fp_movement)(t_data *data, double distance	);
 
 /*	Array of correspondence between instruction movement and
 	function movement  (needed in <shifting.c>  */
