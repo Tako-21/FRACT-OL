@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iteration_mandelbrot.c                             :+:      :+:    :+:   */
+/*   init.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/19 20:50:18 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/21 15:11:21 by mmeguedm         ###   ########.fr       */
+/*   Created: 2022/09/21 14:00:58 by mmeguedm          #+#    #+#             */
+/*   Updated: 2022/09/21 14:57:48 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef INIT_H
+# define INIT_H
+
 #include "tools.h"
-#include "set.h"
 
-int	more_iteration(t_data *data, double iteration)
-{
-	(void)iteration;
-	data->complex.max_iteration += 5;
-	data->exe_fractal(data);
-	data->exe_fractal(data);
-	return (21);
-}
+t_fp_fractal_set	get_set(t_data *data, char **argv);
+void				init_mlx(t_data *data);
+void				init_complex_plane(t_data *data);
+void				init(t_data *data, char **argv, int argc);
+void				init_hook(t_data *data);
 
-int	less_iteration(t_data *data, double iteration)
-{
-	(void)iteration;
-	data->complex.max_iteration -= 5;
-	data->exe_fractal(data);
-	return (21);
-}
+#endif

@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   exit_error.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 13:41:42 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/21 15:07:44 by mmeguedm         ###   ########.fr       */
+/*   Created: 2022/09/21 13:19:11 by mmeguedm          #+#    #+#             */
+/*   Updated: 2022/09/21 13:47:06 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
-#include "tools.h"
-#include "zoom_control.h"
-#include "exit_error.h"
-#include <stdio.h>
-#include </usr/include/X11/X.h>
+#ifndef EXIT_ERROR_H
+# define EXIT_ERROR_H
+
 #include <stdlib.h>
-#include "set.h"
-#include "window_management.h"
-#include "hook_management.h"
-#include "shifting.h"
-#include "utils.h"
-#include "init.h"
+#include <stdio.h>
 
+/* Definition of ERROR_SIGNAL  */
+typedef enum e_sig_err {
+	ERR_NAME,
+	ERR_ARG_LOW,
+	ERR_ARG_HIGH,
+	ERR__LENGHT
+}	t_sig_err;
 
-
-
-int	main(int argc, char **argv)
+/* It required by exit_error in <main.c> to handle differents
+   types of errors  */
+typedef struct s_error
 {
-	t_data	data;
-	init(&data, argv, argc);
-	// multibrot_set(&data, 0);
-	mlx_loop(data.mlx);
-}
+	int		sig_err;
+	char	*sig_msg;
+}			t_error;
+
+void 	exit_error(int sig_err);
+
+#endif

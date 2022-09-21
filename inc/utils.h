@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 20:41:57 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/20 21:13:52 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/21 13:49:39 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,10 @@
 
 #include "tools.h"
 
-int	ft_strcmp(const char *s1, const char *s2);
+t_bool		ft_strcmp(const char *s1, const char *s2);
+size_t		ft_strlen(const char *str);
+static void	ft_putchar_fd(char c, int fd);
+void		ft_putstr_fd(char *s, int fd);
+
+
 #endif

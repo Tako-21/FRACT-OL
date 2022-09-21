@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:39:36 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/20 21:13:03 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/21 14:48:40 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@
 # define JULIA		2
 
 /*	Definition of the boolean type  */
-typedef enum s_bool
+typedef enum e_bool
 {
-	FALSE = 3,
+	FALSE,
 	TRUE
 }	t_bool;
 
@@ -80,18 +80,9 @@ typedef struct s_mouse {
 	int	y;
 }	t_mouse;
 
-/* Definition of the mlx_instance structure and the data structure  */
-typedef struct s_data {
-	void		*mlx;
-	void		*win;
-	char		proc;
-	t_img		img;
-	t_complex	complex;
-	t_mouse		mouse_pos;
-}				t_data;
 
 /* Function pointer required to correspond set and function.  */
-typedef	int(*t_fp_fractal_set)();
+typedef int(*t_fp_fractal_set)();
 
 /*	Array of correspondence between fractal set and args.  */
 typedef struct	s_op_set
@@ -100,5 +91,15 @@ typedef struct	s_op_set
 	t_fp_fractal_set	fractal_fp;
 }						t_op_set;
 
+/* Definition of the mlx_instance structure and the data structure  */
+typedef struct s_data {
+	void				*mlx;
+	void				*win;
+	char				*program_name;
+	t_fp_fractal_set	exe_fractal;
+	t_img				img;
+	t_complex			complex;
+	t_mouse				mouse_pos;
+}						t_data;
 
 #endif

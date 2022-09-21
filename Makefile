@@ -2,7 +2,7 @@ NAME = fract-ol
 
 CC		= cc
 INC_PATH = inc/
-CFLAGS	= $(IFLAGS) -O3
+CFLAGS	= $(IFLAGS) -g3
 IFLAGS = -g3 -I $(INC_PATH) -I $(MLX_PATH)
 
 
@@ -11,9 +11,11 @@ IFLAGS = -g3 -I $(INC_PATH) -I $(MLX_PATH)
 SRC_PATH = src/
 SRCS = $(addprefix $(DSRC),\
 		main.c\
-		render_multibrot.c\
-		render_mandelbrot.c\
-		render_julia.c\
+		multibrot_set.c\
+		mandelbrot_set.c\
+		julia_set.c\
+		init.c\
+		exit_error.c\
 		hook_management.c\
 		shifting.c\
 		iteration_mandelbrot.c\

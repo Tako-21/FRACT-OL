@@ -6,14 +6,14 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:47:00 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/19 22:05:08 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/21 14:43:11 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MOVEMENT_H
 #define MOVEMENT_H
 
-#include <tools.h>
+#include "tools.h"
 
 /* Function pointer needed by the array of correspondence  */
 typedef	int(*t_fp_movement)(t_data *data, double distance);

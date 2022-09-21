@@ -6,14 +6,14 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 21:10:17 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/20 19:20:24 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/21 15:11:58 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "zoom_control.h"
 #include "tools.h"
 #include "shifting.h"
-#include "render.h"
+#include "set.h"
 
 #include <stdio.h>
 
@@ -53,7 +53,7 @@ int	zoom_control(int keycode, int x, int y, t_data *data)
 	else if (keycode == SCROLL_DOWN)
 	{
 		zoom(data, 1.5);
-		render_multibrot(data, 0);
+		data->exe_fractal(data);
 	}
 	return (21);
 }
