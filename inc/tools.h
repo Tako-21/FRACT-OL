@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:39:36 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/21 14:48:40 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/22 23:57:20 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@
 /* Mouse code for mlx_instance  */
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
-
+# define LEFT_CLICK 1
+# define RIGHT_CLICK 2
 /* Key code for mlx_instance  */
 # define KEY_UP 65362
 # define KEY_RIGHT 65363
@@ -76,19 +77,23 @@ typedef struct s_complex {
 
 
 typedef struct s_mouse {
-	int	x;
-	int	y;
+	int	last_x;;
+	int	last_y;
 }	t_mouse;
 
 
-/* Function pointer required to correspond set and function.  */
+/*	Function pointer pointing to the set choosen by the user.  */
 typedef int(*t_fp_fractal_set)();
+
+/*	Function pointer pointing to the key/mouse_hook corresponding
+	to the set  */
+typedef int(*t_fp_init_hook)();
 
 /*	Array of correspondence between fractal set and args.  */
 typedef struct	s_op_set
 {
 	char				*fractal_set;
-	t_fp_fractal_set	fractal_fp;
+	t_fp_fractal_set	fp_op;
 }						t_op_set;
 
 /* Definition of the mlx_instance structure and the data structure  */
@@ -96,7 +101,10 @@ typedef struct s_data {
 	void				*mlx;
 	void				*win;
 	char				*program_name;
+	char				release;
+	int					keycode;
 	t_fp_fractal_set	exe_fractal;
+	t_fp_init_hook		exe_hook;
 	t_img				img;
 	t_complex			complex;
 	t_mouse				mouse_pos;

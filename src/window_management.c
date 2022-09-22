@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:41:36 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/20 12:50:13 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/23 00:04:15 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ int	close_window_red_cross(t_data *mlx)
 	exit(EXIT_SUCCESS);
 }
 
-int	close_window_key_esc(int keycode, t_data *mlx)
+int	close_window_key_esc(int keycode, t_data *data)
 {
 	if (keycode == 65307)
 	{
-		mlx_destroy_window(mlx->mlx, mlx->win);
+		mlx_destroy_window(data->mlx, data->win);
 		exit(EXIT_SUCCESS);
 	}
 	return (1);

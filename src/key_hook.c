@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook_management.c                                  :+:      :+:    :+:   */
+/*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:47:57 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/21 20:06:07 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/22 23:50:11 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "hook_management.h"
+#include "hook.h"
 #include "tools.h"
 #include "shifting.h"
 #include "set.h"
 #include "iteration_mandelbrot.h"
-#include "zoom_mouse_hook.h"
+
 #include "utils.h"
 
 #include <stdio.h> // To remove
@@ -34,7 +34,7 @@ static t_movement *create_move_storage(void)
 	return (move_storage);
 }
 
-static void	multibrot_power(int keycode, t_data *data)
+int	multibrot_hook(int keycode, t_data *data)
 {
 	if (keycode == KEY_PLUS)
 	{
@@ -46,14 +46,15 @@ static void	multibrot_power(int keycode, t_data *data)
 		data->complex.power -= 0.2;
 		data->exe_fractal(data);
 	}
+	return (21);
 }
 
 int	move_key_hook(int keycode, t_data *data)
 {
 	static t_movement	*move_storage;
 
-	if (ft_strcmp(data->program_name, "Multibrot"))
-		multibrot_power(keycode, data);
+	// if (data->exe_hook)
+	// 	data->exe_hook(keycode, data);
 	move_storage = create_move_storage();
 	while (move_storage->shifting_fp)
 	{

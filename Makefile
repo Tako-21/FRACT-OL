@@ -2,7 +2,7 @@ NAME = fract-ol
 
 CC		= cc
 INC_PATH = inc/
-CFLAGS	= $(IFLAGS) -g3
+CFLAGS	= $(IFLAGS) -O2
 IFLAGS = -g3 -I $(INC_PATH) -I $(MLX_PATH)
 
 
@@ -16,11 +16,12 @@ SRCS = $(addprefix $(DSRC),\
 		julia_set.c\
 		init.c\
 		exit_error.c\
-		hook_management.c\
+		get_set_and_hook.c\
+		key_hook.c\
 		shifting.c\
 		iteration_mandelbrot.c\
 		utils.c\
-		zoom_mouse_hook.c\
+		mouse_hook.c\
 		window_management.c)
 
 

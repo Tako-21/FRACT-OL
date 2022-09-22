@@ -6,20 +6,15 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:43:09 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/21 15:11:21 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/22 17:18:06 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shifting.h"
 #include "set.h"
 #include "tools.h"
-#include "hook_management.h"
+#include "hook.h"
 #include <stdio.h>
-
-void	choose_render(void)
-{
-
-}
 
 int	right_move(t_data *data, double distance)
 {

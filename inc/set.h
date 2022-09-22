@@ -17,16 +17,16 @@
 
 /*	Prototypes required for rendering julia set  */
 int	julia_set(t_data *data);
-void	is_in_julia_set(t_data *data, int x, int y);
+static void	is_in_julia_set(t_data *data, int x, int y);
 
 /*	Prototypes required for rendering multibrot set  */
-int		multibrot_set(t_data *data);
+int			multibrot_set(t_data *data);
 static	double	poweer(double n, double p);
-void	is_in_multibrot_set(t_data *data, unsigned int x, unsigned int y);
+static void		is_in_multibrot_set(t_data *data, unsigned int x, unsigned int y);
 
 
 /*	Prototypes required for rendering mandelbrot set  */
-int	mandelbrot_set(t_data *data);
+int		mandelbrot_set(t_data *data);
 static void	is_in_mandelbrot_set(t_data *data, unsigned int x, unsigned int y);
 
 #endif
