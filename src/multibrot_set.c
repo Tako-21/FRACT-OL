@@ -36,10 +36,6 @@ static	double	power_(double n, double p)
 static double	get_z_r(t_data *data)
 {
 	double	z_r;
-	// z_r = data->complex.z_r * data->complex.z_r * data->complex.z_r
-	// 		- ( 3 * data->complex.z_r * data->complex.z_i * data->complex.z_i)
-	// 		+ data->complex.c_r;
-	// printf("power : %f\n", data->complex.power);
 	z_r = power_(data->complex.z_r * data->complex.z_r + data->complex.z_i
 		* data->complex.z_i, data->complex.power/2)
 		* cos(data->complex.power * atan2(data->complex.z_i, data->complex.z_r))
@@ -51,9 +47,6 @@ static double	get_z_i(t_data *data, double tmp_z_r)
 {
 	double	z_i;
 
-	// z_i = (3 * tmp_z_r * tmp_z_r * data->complex.z_i - data->complex.z_i
-	// 		* data->complex.z_i * data->complex.z_i) + data->complex.c_i;
-	// printf("power : %f\n", data->complex.power);
 	z_i = power_(tmp_z_r * tmp_z_r + data->complex.z_i
 		* data->complex.z_i, data->complex.power/2)
 		* sin(data->complex.power * atan2(data->complex.z_i, tmp_z_r))
@@ -71,7 +64,6 @@ void	is_in_multibrot_set(t_data *data, unsigned int x, unsigned int y)
 	data->complex.z_i = 0;
 	index = 0;
 	module = (data->complex.z_r * data->complex.z_r) + (data->complex.z_i * data->complex.z_i);
-	/* If the module of Zn is less than two, then it is part of the Mandelbrot Set. */
 	while (module < 4 && index < data->complex.max_iteration)
 	{
 		tmp = data->complex.z_r;

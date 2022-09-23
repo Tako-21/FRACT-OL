@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:39:36 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/22 23:57:20 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/23 23:59:04 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define TOOLS_H
 
 # include <unistd.h>
+
 
 /* Hexadecimal code for color use  */
 # define RED    0xFF0000
@@ -27,6 +28,7 @@
 # define SCROLL_DOWN 5
 # define LEFT_CLICK 1
 # define RIGHT_CLICK 2
+
 /* Key code for mlx_instance  */
 # define KEY_UP 65362
 # define KEY_RIGHT 65363
@@ -36,6 +38,8 @@
 # define KEY_PG_DOWN 65366
 # define KEY_PLUS 65451
 # define KEY_MINUS 65453
+# define KEY_SPACE 32
+# define KEY_ESC 65307
 
 /* Window dimension values  */
 # define WIDTH 900 // Largeur de la fentre
@@ -102,7 +106,10 @@ typedef struct s_data {
 	void				*win;
 	char				*program_name;
 	char				release;
-	int					keycode;
+	int					keycode_mouse;
+	int					keycode_esc;
+	int					keycode_keyboard;
+	unsigned			bool_space;
 	t_fp_fractal_set	exe_fractal;
 	t_fp_init_hook		exe_hook;
 	t_img				img;

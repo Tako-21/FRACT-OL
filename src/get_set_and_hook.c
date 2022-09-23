@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 16:11:00 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/22 16:19:15 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/23 19:35:03 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,22 @@ t_fp_fractal_set	get_set(t_data *data, char **argv)
 	return (NULL);
 }
 
-t_fp_init_hook	get_hook(t_data *data, char **argv)
-{
-	__uint8_t	index;
+// t_fp_init_hook	get_hook(t_data *data, char **argv)
+// {
+// 	__uint8_t	index;
 
-	index = 0;
-	static t_op_set	op_set []= {
-		{"Mandelbrot", NULL},
-		{"Multibrot", multibrot_hook},
-		{"Julia", julia_hook},
-		{NULL, NULL},
-	};
-	while (op_set[index].fractal_set)
-	{
-		if (ft_strcmp(argv[1], op_set[index].fractal_set))
-			return (op_set[index].fp_op);
-		index++;
-	}
-	return (NULL);
-}
+// 	index = 0;
+// 	static t_op_set	op_set []= {
+// 		{"Mandelbrot", NULL},
+// 		{"Multibrot", multibrot_hook},
+// 		{"Julia", julia_hook},
+// 		{NULL, NULL},
+// 	};
+// 	while (op_set[index].fractal_set)
+// 	{
+// 		if (ft_strcmp(argv[1], op_set[index].fractal_set))
+// 			return (op_set[index].fp_op);
+// 		index++;
+// 	}
+// 	return (NULL);
+// }

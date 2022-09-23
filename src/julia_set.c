@@ -24,7 +24,6 @@ static void	is_in_julia_set(t_data *data, unsigned int x, unsigned int y)
 	index = 0;
 	module = 0;
 	tmp = 0;
-	// printf("data->complex.z_r : %f\n", data->complex.z_r);
 	while (module < 4 && index < data->complex.max_iteration)
 	{
 		tmp = (data->complex.z_r * data->complex.z_r)
@@ -56,7 +55,6 @@ int	julia_set(t_data *data)
 		{
 			data->complex.z_r = data->complex.min_r
 				+ x * (data->complex.max_r - data->complex.min_r) / WIDTH ;
-			// printf("data->complex.z_r : %f\n", data->complex.z_r);
 			data->complex.z_i = data->complex.min_i
 				+ y * (data->complex.max_i - data->complex.min_i) / HEIGHT;
 			is_in_julia_set(data, x, y);

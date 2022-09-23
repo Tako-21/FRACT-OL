@@ -9,6 +9,7 @@
 		"*.tcc": "c",
 		"unordered_map": "c",
 		"numeric": "c",
-		"ostream": "c"
+		"ostream": "c",
+		"window_management.h": "c"
 	}
 }

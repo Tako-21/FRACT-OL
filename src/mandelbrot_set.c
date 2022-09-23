@@ -27,7 +27,6 @@ static void	is_in_mandelbrot_set(t_data *data, unsigned int x, unsigned int y)
 	data->complex.z_i = 0;
 	index = 0;
 	module = (data->complex.z_r * data->complex.z_r) + (data->complex.z_i * data->complex.z_i);
-	/* If the module of Zn is less than two, then it is part of the Mandelbrot Set. */
 	while (module < 4 && index < data->complex.max_iteration)
 	{
 		tmp = data->complex.z_r;

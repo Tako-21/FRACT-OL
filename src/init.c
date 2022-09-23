@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:59:53 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/23 00:07:09 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/24 00:53:52 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,84 +48,63 @@ void	init_complex_plane(t_data *data)
 	data->release = 1;
 	data->complex.max_iteration = 40;
 	data->mouse_pos.last_x = 0;
-	data->keycode = 0;
+	data->keycode_mouse = 0;
+	data->keycode_esc = 0;
+	data->keycode_keyboard = 0;
+	data->bool_space = 1;
 }
 
 int	left_click_press(int actual_x, int actual_y, t_data *data)
 {
 	double	diff_vector;
-	// actual_x -= WIDTH / 2;
-	// if (actual_x > data->mouse_pos.last_x)
-	// {
-	// 	data->complex.c_r += .0005;
-	// 	data->complex.c_i += .0005;
-	// }
-	// else if (actual_x < data->mouse_pos.last_x)
-	// {
-	// 	data->complex.c_r -= .0005;
-	// 	data->complex.c_i -= .0005;
-	// }
-	// printf("actual_x : %d\tlast_x : %d\n", actual_x, data->mouse_pos.last_x);
-	printf("keycode : %d\n", data->keycode);
-	if (data->keycode == LEFT_CLICK)
+
+	if (data->keycode_mouse == LEFT_CLICK)
 	{
 		diff_vector = actual_x - data->mouse_pos.last_x;
 		data->complex.c_r += diff_vector / 1000;
 		data->complex.c_i += diff_vector / 1000;
 		if ((actual_x & 3) == 0)
 			data->exe_fractal(data);
-		data->mouse_pos.last_x = actual_x;
 	}
-	// printf("diff : %f\n", diff_vector / 1000);
-
-	// // printf("%d %% 5 : %d\n", actual_x, actual_x % 5);
-
-	// if (keycode == LEFT_CLICK)
-
-	// if (keycode == LEFT_CLICK)
-	// {
-	// 	while (data->release != 0)
-	// 	{
-	// if (x < 0)
-	// {
-	// 	data->complex.c_r += .001;
-	// 	data->complex.c_i += .001;
-	// }
-	// else if (x > 0)
-	// {
-	// 	data->complex.c_r -= .001;
-	// 	data->complex.c_i -= .001;
-	// }
-	// 	}
-	// }
-	// }
+	data->mouse_pos.last_x = actual_x;
 	return (21);
 }
 
 int	left_click_release(int keycode, int x, int y, t_data *data)
 {
-	data->keycode = 0;
-	printf("Keycode : \tx: %d\ty : %d\n", x, y);
-	// if (keycode == LEFT_CLICK)
-	// {
-	// 	data->release = 0;
-	// 	return (1);
-	// }
-	return (0);
+	data->keycode_mouse = 0;
+	return (21);
+}
+
+int	test(t_data *data)
+{
+	static	unsigned space = 1;
+
+	// printf("data->bool_space : %d\n", data->bool_space);
+	printf("data->bool_space : %d\n", data->bool_space);
+	printf("data->keycode_keyboard : %d\n", data->keycode_keyboard);
+	if (data->bool_space && data->keycode_keyboard == KEY_SPACE &&  (ft_strcmp(data->program_name, "Multibrot")))
+	{
+		printf("a : %d\tn", space);
+		printf("Multibrot !\n");
+		data->complex.power += 0.2;
+		multibrot_set(data);
+	}
+	return (21);
 }
 
 void	init_hook(t_data *data)
 {
-	mlx_hook(data->win, 2, 1L << 0, close_window_key_esc, data);
-	mlx_hook(data->win, 17, 0, close_window_red_cross, data);
+	if (ft_strcmp(data->program_name, "Julia"))
+	{
+		mlx_hook(data->win, 6, 1L << 6, left_click_press, data);
+		mlx_hook(data->win, 5, 1L << 3, left_click_release, data);
+	}
+	mlx_hook(data->win, KeyPress, KeyPressMask, handle_keypress, data);
+	mlx_hook(data->win, DestroyNotify, NoEventMask, close_window_red_cross, data);
+	mlx_mouse_hook(data->win, zoom_mouse_hook, data);
+	mlx_loop_hook(data->mlx, test, data);
 	mlx_key_hook(data->win, move_key_hook, data);
-	// mlx_mouse_hook(data->win, left_click_release, data); // Return keycode
-	// // mlx_mouse_hook(data->win, zoom_mouse_hook, data);
-	// mlx_hook(data->win, 6, 1L<<6, left_click_release, data);
-	mlx_hook(data->win, 5, 1L << 3, left_click_release, data);
-	mlx_mouse_hook(data->win, julia_hook, data);
-	// mlx_mouse_hook(data->win, zoom_mouse_hook, data);
-	mlx_hook(data->win, 6, 1L << 6, left_click_press, data); // Works without keycode
 }
 
 void	init(t_data *data, char **argv, int argc)
@@ -139,11 +118,9 @@ void	init(t_data *data, char **argv, int argc)
 	data->exe_fractal = get_set(data, argv);
 	if (!data->exe_fractal)
 		exit_error(ERR_NAME);
+	data->program_name = argv[1];
 	init_mlx(data);
 	init_hook(data);
 	init_complex_plane(data);
-	// mlx_hook(data->win, 6, 1L<<6, left_click_release, data);
-	data->program_name = argv[1];
-	data->exe_hook = get_hook(data,argv);
 	data->exe_fractal(data);
 }
