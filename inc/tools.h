@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:39:36 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/23 23:59:04 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/24 18:51:59 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@
 # define KEY_ESC 65307
 
 /* Window dimension values  */
-# define WIDTH 900 // Largeur de la fentre
-# define HEIGHT 900 // Hauteur de la fenetre
+# define WIDTH 600 // Largeur de la fentre
+# define HEIGHT 600 // Hauteur de la fenetre
 
 /*	Code for fractal set  */
 # define MANDELBROT	0
@@ -67,15 +67,15 @@ typedef struct s_img {
 }			t_img;
 
 typedef struct s_complex {
-	double		max_r;
-	double		min_r;
-	double		max_i;
-	double		min_i;
-	double		z_r;
-	double		z_i;
-	double		c_r;
-	double		c_i;
-	double	power;
+	long double		max_r;
+	long double		min_r;
+	long double		max_i;
+	long double		min_i;
+	long double		z_r;
+	long double		z_i;
+	long double		c_r;
+	long double		c_i;
+	long double		power;
 	__uint16_t	max_iteration;
 }	t_complex;
 

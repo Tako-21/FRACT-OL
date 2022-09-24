@@ -18,9 +18,9 @@
 #include <math.h>
 #include <stdio.h>
 
-static	double	power_(double n, double p)
+static	long double	power_(long double n, long double p)
 {
-	double	result;
+	long double	result;
 
 	result = 1;
 	if (p < 0)
@@ -33,22 +33,23 @@ static	double	power_(double n, double p)
 	return (result);
 }
 
-static double	get_z_r(t_data *data)
+static long double	get_z_r(t_data *data)
 {
-	double	z_r;
-	z_r = power_(data->complex.z_r * data->complex.z_r + data->complex.z_i
-		* data->complex.z_i, data->complex.power/2)
+	long double	z_r;
+
+	z_r = pow(data->complex.z_r * data->complex.z_r + data->complex.z_i
+		* data->complex.z_i, data->complex.power/2.0f)
 		* cos(data->complex.power * atan2(data->complex.z_i, data->complex.z_r))
 		+ data->complex.c_r;
 	return (z_r);
 }
 
-static double	get_z_i(t_data *data, double tmp_z_r)
+static long double	get_z_i(t_data *data, long double tmp_z_r)
 {
-	double	z_i;
+	long double	z_i;
 
-	z_i = power_(tmp_z_r * tmp_z_r + data->complex.z_i
-		* data->complex.z_i, data->complex.power/2)
+	z_i = pow(tmp_z_r * tmp_z_r + data->complex.z_i
+		* data->complex.z_i, data->complex.power/2.0f)
 		* sin(data->complex.power * atan2(data->complex.z_i, tmp_z_r))
 		+ data->complex.c_i;
 	return (z_i);
@@ -57,14 +58,14 @@ static double	get_z_i(t_data *data, double tmp_z_r)
 void	is_in_multibrot_set(t_data *data, unsigned int x, unsigned int y)
 {
 	int		index;
-	double	tmp;
-	double	module;
+	long double	tmp;
+	long double	module;
 
 	data->complex.z_r = 0;
 	data->complex.z_i = 0;
 	index = 0;
 	module = (data->complex.z_r * data->complex.z_r) + (data->complex.z_i * data->complex.z_i);
-	while (module < 4 && index < data->complex.max_iteration)
+	while (module < 4.0f && index < data->complex.max_iteration)
 	{
 		tmp = data->complex.z_r;
 		data->complex.z_r = get_z_r(data);

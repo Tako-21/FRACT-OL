@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:47:57 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/24 00:51:20 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/24 17:07:19 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,35 +38,31 @@ static	t_movement	*create_move_storage(void)
 
 int	multibrot_hook(int keycode, t_data *data)
 {
-	if (ft_strcmp(data->program_name, "Multibrot"))
-	{
-		printf("Multibrot !\n");
-	}
-		if (keycode == KEY_PLUS)
-		{
-			data->complex.power += 0.2;
-			data->exe_fractal(data);
-		}
-		else if (keycode == KEY_MINUS)
-		{
-			data->complex.power -= 0.2;
-			data->exe_fractal(data);
-		}
+	// if (ft_strcmp(data->program_name, "Multibrot"))
+	// {
+	// 	printf("Multibrot !\n");
+	// }
+	// 	if (keycode == KEY_PLUS)
+	// 	{
+	// 		data->complex.power += 0.2;
+	// 		data->exe_fractal(data);
+	// 	}
+	// 	else if (keycode == KEY_MINUS)
+	// 	{
+	// 		data->complex.power -= 0.2;
+	// 		data->exe_fractal(data);
+	// 	}
 	return (21);
 }
 
 int	move_key_hook(int keycode, t_data *data)
 {
-	// printf("keycode : %d\n", keycode);
 	static t_movement	*move_storage;
 
-	// data->bool_space = 0;
-	// data->bool_space += 1;
 	data->keycode_keyboard = keycode;
-	data->bool_space ^= 0x1;
-	// printf("data->bool_space : %d\n", data->bool_space);
-
-	// multibrot_hook(keycode, data);
+	if (keycode == KEY_SPACE)
+		data->bool_space ^= 0x1;
+	printf("data->bool_space : %d\n", data->bool_space);
 	move_storage = create_move_storage();
 	while (move_storage->shifting_fp)
 	{

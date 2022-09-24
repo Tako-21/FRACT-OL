@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:59:53 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/24 00:53:52 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/24 19:06:43 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ void	init_complex_plane(t_data *data)
 	data->complex.z_i = 0;
 	data->complex.c_r = -.8;
 	data->complex.c_i = 0.156;
-	data->complex.power = 1;
+	data->complex.power = 1.0f;
 	data->release = 1;
 	data->complex.max_iteration = 40;
 	data->mouse_pos.last_x = 0;
 	data->keycode_mouse = 0;
 	data->keycode_esc = 0;
 	data->keycode_keyboard = 0;
-	data->bool_space = 1;
+	data->bool_space = 0;
 }
 
 int	left_click_press(int actual_x, int actual_y, t_data *data)
@@ -78,17 +78,19 @@ int	left_click_release(int keycode, int x, int y, t_data *data)
 
 int	test(t_data *data)
 {
-	static	unsigned space = 1;
+	static	unsigned	counter;
 
-	// printf("data->bool_space : %d\n", data->bool_space);
-	printf("data->bool_space : %d\n", data->bool_space);
-	printf("data->keycode_keyboard : %d\n", data->keycode_keyboard);
-	if (data->bool_space && data->keycode_keyboard == KEY_SPACE &&  (ft_strcmp(data->program_name, "Multibrot")))
+	if ((data->bool_space) && (data->keycode_keyboard == KEY_SPACE)
+		&& ((ft_strcmp(data->program_name, "Multibrot"))))
+		// && (data->complex.power <= 2.0f))
 	{
-		printf("a : %d\tn", space);
-		printf("Multibrot !\n");
-		data->complex.power += 0.2;
-		multibrot_set(data);
+		if ((counter & 7) == 0)
+		{
+			multibrot_set(data);
+			data->complex.power += .02f;
+			counter = 0;
+		}
+		counter++;
 	}
 	return (21);
 }
@@ -120,7 +122,7 @@ void	init(t_data *data, char **argv, int argc)
 		exit_error(ERR_NAME);
 	data->program_name = argv[1];
 	init_mlx(data);
-	init_hook(data);
 	init_complex_plane(data);
+	init_hook(data);
 	data->exe_fractal(data);
 }
