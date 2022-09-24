@@ -1,5 +1,5 @@
 mia
-test.c
+dynamic_multibrot.c
 *.o
 ./obj
 Fract-OL_Makefile

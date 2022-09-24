@@ -37,13 +37,9 @@ static void	is_in_julia_set(t_data *data, unsigned int x, unsigned int y)
 	}
 	if (index == data->complex.max_iteration)
 		my_mlx_pixel_put(&data->img, x, y, BLACK);
-	// else if (index >= 12)
-		// my_mlx_pixel_put(&data->img, x, y, ORANGE);
 	else
 		my_mlx_pixel_put(&data->img, x, y,
 			create_trgb(0, 0, index * 321 / data->complex.max_iteration, 0));
-		// my_mlx_pixel_put(&data->img, x, y, BLACK);
-
 }
 
 int	julia_set(t_data *data)

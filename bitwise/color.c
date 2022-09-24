@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 18:24:33 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/09 15:37:45 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/24 21:01:12 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	create_trgb(unsigned char t, unsigned char r, unsigned char  g, unsigned cha
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-int	create_test(int t)
+int	create_dynamic_multibrot(int t)
 {
 	return (t << 1);
 }
@@ -71,7 +71,7 @@ int	main(void)
 	a = 0;
 	a = ~a;
 	a = 2147483647;
-	//printf("create test : %d\n", create_test(a));
+	//printf("create dynamic_multibrot : %d\n", create_dynamic_multibrot(a));
 	trgb = create_trgb(0, 8, 0, 0);
 	printf("create trgb : %d\n", trgb);
 	printf("get r : %d\n", get_r(trgb));

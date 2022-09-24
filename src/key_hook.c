@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:47:57 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/24 17:07:19 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/24 21:10:43 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,36 +22,34 @@
 
 static	t_movement	*create_move_storage(void)
 {
-	static	t_movement	move_storage[] = {
-		{KEY_UP, up_move},
-		{KEY_DOWN, down_move},
-		{KEY_LEFT, left_move},
-		{KEY_RIGHT, right_move},
-		{KEY_PG_UP, more_iteration},
-		{KEY_PG_DOWN, less_iteration},
-		// {KEY_SPACE, multibrot_hook},
-		{0, NULL},
+	static t_movement	move_storage[] = {
+	{KEY_UP, up_move},
+	{KEY_DOWN, down_move},
+	{KEY_LEFT, left_move},
+	{KEY_RIGHT, right_move},
+	{KEY_PG_UP, more_iteration},
+	{KEY_PG_DOWN, less_iteration},
+	{0, NULL},
 	};
 
 	return (move_storage);
 }
 
-int	multibrot_hook(int keycode, t_data *data)
+int	dynamic_multibrot(t_data *data)
 {
-	// if (ft_strcmp(data->program_name, "Multibrot"))
-	// {
-	// 	printf("Multibrot !\n");
-	// }
-	// 	if (keycode == KEY_PLUS)
-	// 	{
-	// 		data->complex.power += 0.2;
-	// 		data->exe_fractal(data);
-	// 	}
-	// 	else if (keycode == KEY_MINUS)
-	// 	{
-	// 		data->complex.power -= 0.2;
-	// 		data->exe_fractal(data);
-	// 	}
+	static unsigned char	counter;
+
+	if ((data->bool_space) && (data->keycode_keyboard == KEY_SPACE)
+		&& ((ft_strcmp(data->program_name, "Multibrot"))))
+	{
+		if ((counter & 7) == 0)
+		{
+			multibrot_set(data);
+			data->complex.power += .02f;
+			counter = 0;
+		}
+		counter++;
+	}
 	return (21);
 }
 

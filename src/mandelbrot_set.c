@@ -26,19 +26,23 @@ static void	is_in_mandelbrot_set(t_data *data, unsigned int x, unsigned int y)
 	data->complex.z_r = 0;
 	data->complex.z_i = 0;
 	index = 0;
-	module = (data->complex.z_r * data->complex.z_r) + (data->complex.z_i * data->complex.z_i);
+	module = (data->complex.z_r * data->complex.z_r)
+		+ (data->complex.z_i * data->complex.z_i);
 	while (module < 4 && index < data->complex.max_iteration)
 	{
 		tmp = data->complex.z_r;
-		data->complex.z_r = (data->complex.z_r * data->complex.z_r) - (data->complex.z_i * data->complex.z_i) + data->complex.c_r;
+		data->complex.z_r = (data->complex.z_r * data->complex.z_r)
+			- (data->complex.z_i * data->complex.z_i) + data->complex.c_r;
 		data->complex.z_i = (2 * data->complex.z_i * tmp) + data->complex.c_i;
-		module = (data->complex.z_r*data->complex.z_r) + (data->complex.z_i*data->complex.z_i);
+		module = (data->complex.z_r * data->complex.z_r)
+			+ (data->complex.z_i * data->complex.z_i);
 		index++;
 	}
 	if (index == data->complex.max_iteration)
 		my_mlx_pixel_put(&data->img, x, y, BLACK);
 	else
-		my_mlx_pixel_put(&data->img, x, y, create_trgb(0, 0, index*321/data->complex.max_iteration, 0));
+		my_mlx_pixel_put(&data->img, x, y,
+			create_trgb(0, 0, index * 321 / data->complex.max_iteration, 0));
 }
 
 int	mandelbrot_set(t_data *data)
@@ -52,8 +56,10 @@ int	mandelbrot_set(t_data *data)
 		y = 0;
 		while (++y < HEIGHT)
 		{
-			data->complex.c_r = data->complex.min_r + x * (data->complex.max_r - data->complex.min_r) / WIDTH;
-			data->complex.c_i = data->complex.min_i + y * (data->complex.max_i - data->complex.min_i) / HEIGHT;
+			data->complex.c_r = data->complex.min_r + x
+				* (data->complex.max_r - data->complex.min_r) / WIDTH;
+			data->complex.c_i = data->complex.min_i + y
+				* (data->complex.max_i - data->complex.min_i) / HEIGHT;
 			is_in_mandelbrot_set(data, x, y);
 		}
 	}

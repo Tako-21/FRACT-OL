@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:59:53 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/24 19:06:43 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/24 21:05:58 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,47 +54,6 @@ void	init_complex_plane(t_data *data)
 	data->bool_space = 0;
 }
 
-int	left_click_press(int actual_x, int actual_y, t_data *data)
-{
-	double	diff_vector;
-
-	if (data->keycode_mouse == LEFT_CLICK)
-	{
-		diff_vector = actual_x - data->mouse_pos.last_x;
-		data->complex.c_r += diff_vector / 1000;
-		data->complex.c_i += diff_vector / 1000;
-		if ((actual_x & 3) == 0)
-			data->exe_fractal(data);
-	}
-	data->mouse_pos.last_x = actual_x;
-	return (21);
-}
-
-int	left_click_release(int keycode, int x, int y, t_data *data)
-{
-	data->keycode_mouse = 0;
-	return (21);
-}
-
-int	test(t_data *data)
-{
-	static	unsigned	counter;
-
-	if ((data->bool_space) && (data->keycode_keyboard == KEY_SPACE)
-		&& ((ft_strcmp(data->program_name, "Multibrot"))))
-		// && (data->complex.power <= 2.0f))
-	{
-		if ((counter & 7) == 0)
-		{
-			multibrot_set(data);
-			data->complex.power += .02f;
-			counter = 0;
-		}
-		counter++;
-	}
-	return (21);
-}
-
 void	init_hook(t_data *data)
 {
 	if (ft_strcmp(data->program_name, "Julia"))
@@ -103,9 +62,9 @@ void	init_hook(t_data *data)
 		mlx_hook(data->win, 5, 1L << 3, left_click_release, data);
 	}
 	mlx_hook(data->win, KeyPress, KeyPressMask, handle_keypress, data);
-	mlx_hook(data->win, DestroyNotify, NoEventMask, close_window_red_cross, data);
+	mlx_hook(data->win, DestroyNotify, NoEventMask, close_window_cross, data);
 	mlx_mouse_hook(data->win, zoom_mouse_hook, data);
-	mlx_loop_hook(data->mlx, test, data);
+	mlx_loop_hook(data->mlx, dynamic_multibrot, data);
 	mlx_key_hook(data->win, move_key_hook, data);
 }
 
@@ -115,7 +74,7 @@ void	init(t_data *data, char **argv, int argc)
 
 	if (argc > 2)
 		exit_error(ERR_ARG_HIGH);
-	else  if (argc < 2)
+	else if (argc < 2)
 		exit_error(ERR_ARG_LOW);
 	data->exe_fractal = get_set(data, argv);
 	if (!data->exe_fractal)

@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:48:39 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/23 19:18:52 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/24 21:05:57 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,6 @@ static void			zoom(t_data *data, double zoom);
 int					zoom_mouse_hook(int keycode, int x, int y, t_data *data);
 int					julia_hook(int keycode, int x, int y, t_data *data);
 
+int					left_click_press(int actual_x, int actual_y, t_data *data);
+int					left_click_release(int keycode, int x, int y, t_data *data);
 #endif
