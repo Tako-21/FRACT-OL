@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 15:36:26 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/01 17:31:20 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/01 19:21:40 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,15 @@ void	color_interpolation(t_data *data, __uint16_t index, unsigned x, unsigned y)
 
 }
 
+/*	Use here a function pointer defined in t_data and initialise it in <init.c>  */
 void	set_color_scheme(t_data *data, __uint16_t index, unsigned x, unsigned y)
 {
 	if (data->keycode_keyboard == KEY_ONE)
+		// data->exe_color_scheme = ...
 		my_mlx_pixel_put(&data->img, x, y, mapping_color(index));
-	else if (data->keycode_keyboard == KEY_TWO)
-		my_mlx_pixel_put(&data->img, x, y,
-			create_trgb(0, 0, index * 321 / data->complex.max_iteration, 0));
-	else if (data->keycode_keyboard == KEY_THREE)
-		color_interpolation(data, index, x, y);
+// 	else if (data->keycode_keyboard == KEY_TWO)
+// 		my_mlx_pixel_put(&data->img, x, y,
+// 			create_trgb(0, 0, index * 321 / data->complex.max_iteration, 0));
+// 	else if (data->keycode_keyboard == KEY_THREE)
+// 		color_interpolation(data, index, x, y);
 }

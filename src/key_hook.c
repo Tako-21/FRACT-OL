@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:47:57 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/01 17:02:08 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/01 19:09:49 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ int	move_key_hook(int keycode, t_data *data)
 {
 	static t_movement	*move_storage;
 
-	printf("keycode : %d\n", keycode);
 	if (keycode == KEY_SPACE)
 		data->bool_space ^= 0x1;
 	data->keycode_keyboard = keycode;

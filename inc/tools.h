@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:39:36 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/01 16:54:35 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/01 19:21:26 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,9 @@ typedef int(*t_fp_fractal_set)();
 	to the set  */
 typedef int(*t_fp_init_hook)();
 
+/*	Function pointer to the corresponding color scheme  */
+typedef int(*t_fp_color_scheme)();
+
 /*	Array of correspondence between fractal set and args.  */
 typedef struct s_op_set
 {
@@ -112,6 +115,7 @@ typedef struct s_data {
 	unsigned char		bool_space;
 	t_fp_fractal_set	exe_fractal;
 	t_fp_init_hook		exe_hook;
+	t_fp_color_scheme	exe_color_scheme;
 	t_img				img;
 	t_complex			complex;
 	t_mouse				mouse_pos;
