@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   window_management.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:41:36 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/24 21:12:12 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/01 16:44:38 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <window_management.h>
+#include "window.h"
 #include "mlx.h"
-#include <tools.h>
-#include <stdlib.h>
+#include "tools.h"
 #include "set.h"
+#include <stdlib.h>
 
 int	close_window_cross(t_data *mlx)
 {
@@ -22,16 +22,18 @@ int	close_window_cross(t_data *mlx)
 	exit(EXIT_SUCCESS);
 }
 
-void	close_window_key_esc(t_data *data)
+int	close_window_key_esc(t_data *data, double uncessary)
 {
+	(void)uncessary;
 	mlx_destroy_window(data->mlx, data->win);
 	exit(EXIT_SUCCESS);
+	return (21);
 }
 
 int	handle_keypress(int keycode, t_data *data)
 {
-	if (keycode == KEY_ESC)
-		close_window_key_esc(data);
+	// if (keycode == KEY_ESC)
+	// 	close_window_key_esc(data);
 	return (21);
 }
 
@@ -39,13 +41,8 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, unsigned int color)
 {
 	char	*dst;
 
-	dst = data->addr
-		+ (y * data->line_length + x * (data->bits_per_pixel / 8));
+	dst = data->addr + (y * data->line_length + x * 4);
 	*(unsigned int *)dst = color;
 }
 
-int	create_trgb(unsigned char t, unsigned char r,
-	unsigned char g, unsigned char b)
-{
-	return (t << 24 | r << 16 | g << 8 | b);
-}
+

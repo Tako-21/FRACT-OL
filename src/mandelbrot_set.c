@@ -12,16 +12,16 @@
 
 #include "set.h"
 #include "mlx.h"
-#include "window_management.h"
+#include "window.h"
 #include "tools.h"
 
 #include <stdio.h>
 
 static void	is_in_mandelbrot_set(t_data *data, unsigned int x, unsigned int y)
 {
-	int		index;
-	double	tmp;
-	double	module;
+	__uint16_t	index;
+	double		tmp;
+	double		module;
 
 	data->complex.z_r = 0;
 	data->complex.z_i = 0;
@@ -41,8 +41,7 @@ static void	is_in_mandelbrot_set(t_data *data, unsigned int x, unsigned int y)
 	if (index == data->complex.max_iteration)
 		my_mlx_pixel_put(&data->img, x, y, BLACK);
 	else
-		my_mlx_pixel_put(&data->img, x, y,
-			create_trgb(0, 0, index * 321 / data->complex.max_iteration, 0));
+		set_color_scheme(data, index, x, y);
 }
 
 int	mandelbrot_set(t_data *data)

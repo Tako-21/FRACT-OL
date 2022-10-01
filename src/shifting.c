@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   shifting.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:43:09 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/22 17:18:06 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/01 15:49:02 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "shifting.h"
+#include "move.h"
 #include "set.h"
 #include "tools.h"
 #include "hook.h"
@@ -23,7 +23,6 @@ int	right_move(t_data *data, double distance)
 	center_r = data->complex.max_r - data->complex.min_r;
 	data->complex.min_r += center_r * distance;
 	data->complex.max_r += center_r * distance;
-	data->exe_fractal(data);
 	return (21);
 }
 
@@ -34,7 +33,6 @@ int	left_move(t_data *data, double distance)
 	center_r = data->complex.max_r - data->complex.min_r;
 	data->complex.min_r -= center_r * distance;
 	data->complex.max_r -= center_r * distance;
-	data->exe_fractal(data);
 	return (21);
 }
 
@@ -45,7 +43,6 @@ int	up_move(t_data *data, double distance)
 	center_i = data->complex.max_i - data->complex.min_i;
 	data->complex.min_i -= center_i * distance;
 	data->complex.max_i -= center_i * distance;
-	data->exe_fractal(data);
 	return (21);
 }
 
@@ -56,6 +53,5 @@ int	down_move(t_data *data, double distance)
 	center_i = data->complex.max_i - data->complex.min_i;
 	data->complex.max_i += center_i * distance;
 	data->complex.min_i += center_i * distance;
-	data->exe_fractal(data);
 	return (21);
 }

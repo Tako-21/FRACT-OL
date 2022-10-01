@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window_management.h                                :+:      :+:    :+:   */
+/*   window.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:50:24 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/24 20:59:50 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:18:43 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WINDOW_MANAGEMENT_H
 # define WINDOW_MANAGEMENT_H
 
-#include <tools.h>
+# include <tools.h>
 
-int		handle_keypress(int keycode, t_data *mlx);
+/*	Manage closing window  */
+int		close_window_key_esc(t_data *data, double uncessary);
 int		close_window_cross(t_data *mlx);
+
+/*	Encoding and decoding colors  */
+int		get_r(int trgb);
+int		get_g(int trgb);
+int		get_b(int trgb);
+int		create_trgb(unsigned char t, unsigned char r,
+			unsigned char g, unsigned char b);
+
+/*	Color schemes  */
+int		mapping_color(unsigned int index);
+void	color_interpolation(t_data *data, __uint16_t index, unsigned x, unsigned y);
+void	set_color_scheme(t_data *data, __uint16_t index, unsigned x, unsigned y);
 void	my_mlx_pixel_put(t_img *data, int x, int y, unsigned int color);
-int		create_trgb(unsigned char t, unsigned char r, unsigned char g, unsigned char b);
 
 #endif

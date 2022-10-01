@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   exit_error.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:19:11 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/21 13:47:06 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:13:40 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXIT_ERROR_H
 # define EXIT_ERROR_H
 
-#include <stdlib.h>
-#include <stdio.h>
+# include <stdlib.h>
+# include <stdio.h>
 
 /* Definition of ERROR_SIGNAL  */
 typedef enum e_sig_err {
@@ -32,6 +32,6 @@ typedef struct s_error
 	char	*sig_msg;
 }			t_error;
 
-void 	exit_error(int sig_err);
+void	exit_error(int sig_err);
 
 #endif

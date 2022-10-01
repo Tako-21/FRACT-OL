@@ -3,19 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:47:57 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/24 21:10:43 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/01 17:02:08 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hook.h"
 #include "tools.h"
-#include "shifting.h"
+#include "move.h"
 #include "set.h"
-#include "iteration_mandelbrot.h"
-
+#include "window.h"
 #include "utils.h"
 
 #include <stdio.h> // To remove
@@ -29,6 +28,7 @@ static	t_movement	*create_move_storage(void)
 	{KEY_RIGHT, right_move},
 	{KEY_PG_UP, more_iteration},
 	{KEY_PG_DOWN, less_iteration},
+	{KEY_ESC, close_window_key_esc},
 	{0, NULL},
 	};
 
@@ -57,10 +57,10 @@ int	move_key_hook(int keycode, t_data *data)
 {
 	static t_movement	*move_storage;
 
-	data->keycode_keyboard = keycode;
+	printf("keycode : %d\n", keycode);
 	if (keycode == KEY_SPACE)
 		data->bool_space ^= 0x1;
-	printf("data->bool_space : %d\n", data->bool_space);
+	data->keycode_keyboard = keycode;
 	move_storage = create_move_storage();
 	while (move_storage->shifting_fp)
 	{
@@ -71,5 +71,6 @@ int	move_key_hook(int keycode, t_data *data)
 		}
 		move_storage++;
 	}
+	data->exe_fractal(data);
 	return (21);
 }

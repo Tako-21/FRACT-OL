@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:39:36 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/24 18:51:59 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/01 16:54:35 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define TOOLS_H
 
 # include <unistd.h>
-
 
 /* Hexadecimal code for color use  */
 # define RED    0xFF0000
@@ -40,6 +39,9 @@
 # define KEY_MINUS 65453
 # define KEY_SPACE 32
 # define KEY_ESC 65307
+# define KEY_ONE 65436
+# define KEY_TWO 65433
+# define KEY_THREE 65435
 
 /* Window dimension values  */
 # define WIDTH 600 // Largeur de la fentre
@@ -76,15 +78,13 @@ typedef struct s_complex {
 	long double		c_r;
 	long double		c_i;
 	long double		power;
-	__uint16_t	max_iteration;
+	__uint16_t		max_iteration;
 }	t_complex;
 
-
 typedef struct s_mouse {
-	int	last_x;;
+	int	last_x;
 	int	last_y;
 }	t_mouse;
-
 
 /*	Function pointer pointing to the set choosen by the user.  */
 typedef int(*t_fp_fractal_set)();
@@ -94,7 +94,7 @@ typedef int(*t_fp_fractal_set)();
 typedef int(*t_fp_init_hook)();
 
 /*	Array of correspondence between fractal set and args.  */
-typedef struct	s_op_set
+typedef struct s_op_set
 {
 	char				*fractal_set;
 	t_fp_fractal_set	fp_op;
@@ -109,7 +109,7 @@ typedef struct s_data {
 	int					keycode_mouse;
 	int					keycode_esc;
 	int					keycode_keyboard;
-	unsigned			bool_space;
+	unsigned char		bool_space;
 	t_fp_fractal_set	exe_fractal;
 	t_fp_init_hook		exe_hook;
 	t_img				img;

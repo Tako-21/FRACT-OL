@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.h                                             :+:      :+:    :+:   */
+/*   handle_color.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 14:00:58 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/28 16:17:11 by mmeguedm         ###   ########.fr       */
+/*   Created: 2022/10/01 13:50:29 by mmeguedm          #+#    #+#             */
+/*   Updated: 2022/10/01 14:26:21 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INIT_H
-# define INIT_H
+#include "window.h"
 
-# include "tools.h"
+int	create_trgb(unsigned char t, unsigned char r,
+	unsigned char g, unsigned char b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
+}
 
-t_fp_init_hook		get_hook(t_data *data, char **argv);
-t_fp_fractal_set	get_set(t_data *data, char **argv);
+int	get_r(int trgb)
+{
+	return ((trgb >> 16) & 0xFF);
+}
 
-void				init_mlx(t_data *data);
-void				init_complex_plane(t_data *data);
-void				init(t_data *data, char **argv, int argc);
-void				init_hook(t_data *data);
+int	get_g(int trgb)
+{
+	return ((trgb >> 8) & 0xFF);
+}
 
-#endif
+int	get_b(int trgb)
+{
+	return (trgb & 0xFF);
+}

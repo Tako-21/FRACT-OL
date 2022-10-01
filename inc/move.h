@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shifting.h                                         :+:      :+:    :+:   */
+/*   move.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,17 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MOVEMENT_H
-#define MOVEMENT_H
+#ifndef MOVE_H
+# define MOVE_H
 
-#include "tools.h"
+# include "tools.h"
 
+# include "move.h"
 /* Function pointer needed by the array of correspondence  */
-typedef	int(*t_fp_movement)();
+typedef int(*t_fp_movement)();
 
 /*	Array of correspondence between instruction movement and
 	function movement  (needed in <shifting.c>  */
-typedef struct	s_movement
+typedef struct s_movement
 {
 	unsigned int	shifting;
 	t_fp_movement	shifting_fp;
@@ -31,6 +32,6 @@ int	left_move(t_data *data, double distance);
 int	up_move(t_data *data, double distance);
 int	down_move(t_data *data, double distance);
 
-int		get_current_position_mouse(int	x, int y, t_data *mlx);
+int	get_current_position_mouse(int x, int y, t_data *mlx);
 
 #endif

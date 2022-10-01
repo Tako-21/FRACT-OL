@@ -13,7 +13,7 @@
 #include "set.h"
 #include "mlx.h"
 #include "tools.h"
-#include "window_management.h"
+#include "window.h"
 
 #include <math.h>
 #include <stdio.h>
@@ -78,8 +78,7 @@ void	is_in_multibrot_set(t_data *data, unsigned int x, unsigned int y)
 	if (index == data->complex.max_iteration)
 		my_mlx_pixel_put(&data->img, x, y, BLACK);
 	else
-		my_mlx_pixel_put(&data->img, x, y,
-			create_trgb(0, 0, index * 321 / data->complex.max_iteration, 0));
+		set_color_scheme(data, index, x, y);
 }
 
 int	multibrot_set(t_data *data)

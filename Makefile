@@ -16,9 +16,12 @@ SRCS = $(addprefix $(DSRC),\
 		julia_set.c\
 		init.c\
 		exit_error.c\
+		color_schemes.c\
 		get_set_and_hook.c\
 		key_hook.c\
 		shifting.c\
+		dynamic_julia.c\
+		handle_color.c\
 		iteration_mandelbrot.c\
 		utils.c\
 		mouse_hook.c\

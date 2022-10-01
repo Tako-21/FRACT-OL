@@ -1,7 +1,7 @@
 {
 	"files.associations": {
 		"stdio.h": "c",
-		"shifting.h": "c",
+		"move.h": "c",
 		"tools.h": "c",
 		"mlx.h": "c",
 		"hook.h": "c",
@@ -10,6 +10,13 @@
 		"unordered_map": "c",
 		"numeric": "c",
 		"ostream": "c",
-		"window_management.h": "c"
+		"window.h": "c",
+		"array": "c",
+		"string": "c",
+		"string_view": "c",
+		"ranges": "c",
+		"span": "c",
+		"unistd.h": "c",
+		"set.h": "c"
 	}
 }

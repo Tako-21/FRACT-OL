@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:59:53 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/24 21:05:58 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/01 17:28:11 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "mlx.h"
 #include "set.h"
 #include "utils.h"
-#include "window_management.h"
+#include "window.h"
 #include "hook.h"
 
 #include <X11/Xlib.h>
@@ -50,7 +50,7 @@ void	init_complex_plane(t_data *data)
 	data->mouse_pos.last_x = 0;
 	data->keycode_mouse = 0;
 	data->keycode_esc = 0;
-	data->keycode_keyboard = 0;
+	data->keycode_keyboard = KEY_ONE;
 	data->bool_space = 0;
 }
 
@@ -61,7 +61,7 @@ void	init_hook(t_data *data)
 		mlx_hook(data->win, 6, 1L << 6, left_click_press, data);
 		mlx_hook(data->win, 5, 1L << 3, left_click_release, data);
 	}
-	mlx_hook(data->win, KeyPress, KeyPressMask, handle_keypress, data);
+	// mlx_hook(data->win, KeyPress, KeyPressMask, handle_keypress, data);
 	mlx_hook(data->win, DestroyNotify, NoEventMask, close_window_cross, data);
 	mlx_mouse_hook(data->win, zoom_mouse_hook, data);
 	mlx_loop_hook(data->mlx, dynamic_multibrot, data);
