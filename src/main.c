@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 13:41:42 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/28 15:48:09 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/02 15:53:16 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 int	main(int argc, char **argv)
 {
 	t_data	data;
-	t_mouse	mouse_pos;
 
 	init(&data, argv, argc);
 	mlx_loop(data.mlx);

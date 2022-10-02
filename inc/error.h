@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_error.h                                       :+:      :+:    :+:   */
+/*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:19:11 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/28 16:13:40 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/02 19:07:09 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXIT_ERROR_H
-# define EXIT_ERROR_H
+#ifndef ERROR_H
+# define ERROR_H
 
 # include <stdlib.h>
 # include <stdio.h>
+# include "tools.h"
 
 /* Definition of ERROR_SIGNAL  */
 typedef enum e_sig_err {
@@ -33,5 +34,7 @@ typedef struct s_error
 }			t_error;
 
 void	exit_error(int sig_err);
+void	parse_args(t_data *data, int argc, char **argv);
+t_bool	allowed_string(char *str);
 
 #endif

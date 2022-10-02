@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:47:57 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/01 19:09:49 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/02 16:26:18 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,14 @@ int	dynamic_multibrot(t_data *data)
 	return (21);
 }
 
-int	move_key_hook(int keycode, t_data *data)
+int	move_key_hook(unsigned int keycode, t_data *data)
 {
 	static t_movement	*move_storage;
 
+	data->keycode_keyboard = keycode;
+	get_color_scheme(data);
 	if (keycode == KEY_SPACE)
 		data->bool_space ^= 0x1;
-	data->keycode_keyboard = keycode;
 	move_storage = create_move_storage();
 	while (move_storage->shifting_fp)
 	{

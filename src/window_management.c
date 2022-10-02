@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:41:36 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/01 16:44:38 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/02 16:05:18 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,6 @@ int	close_window_key_esc(t_data *data, double uncessary)
 	(void)uncessary;
 	mlx_destroy_window(data->mlx, data->win);
 	exit(EXIT_SUCCESS);
-	return (21);
-}
-
-int	handle_keypress(int keycode, t_data *data)
-{
-	// if (keycode == KEY_ESC)
-	// 	close_window_key_esc(data);
 	return (21);
 }
 

@@ -41,7 +41,8 @@ static void	is_in_mandelbrot_set(t_data *data, unsigned int x, unsigned int y)
 	if (index == data->complex.max_iteration)
 		my_mlx_pixel_put(&data->img, x, y, BLACK);
 	else
-		set_color_scheme(data, index, x, y);
+		data->exe_color_scheme(data, index, x, y);
+
 }
 
 int	mandelbrot_set(t_data *data)

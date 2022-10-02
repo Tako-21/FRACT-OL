@@ -6,12 +6,12 @@
 /*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:59:53 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/01 17:28:11 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/02 21:07:18 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init.h"
-#include "exit_error.h"
+#include "error.h"
 #include "tools.h"
 #include "mlx.h"
 #include "set.h"
@@ -35,6 +35,7 @@ void	init_mlx(t_data *data)
 
 void	init_complex_plane(t_data *data)
 {
+	data->complex.power = 1.0f;
 	data->complex.max_r = 1.0;
 	data->complex.min_r = -2.0;
 	data->complex.min_i = -1.5;
@@ -42,16 +43,31 @@ void	init_complex_plane(t_data *data)
 		+ (data->complex.max_r - data->complex.min_r) * (HEIGHT / WIDTH);
 	data->complex.z_r = 0;
 	data->complex.z_i = 0;
-	data->complex.c_r = -.8;
-	data->complex.c_i = 0.156;
-	data->complex.power = 1.0f;
-	data->release = 1;
 	data->complex.max_iteration = 40;
 	data->mouse_pos.last_x = 0;
 	data->keycode_mouse = 0;
 	data->keycode_esc = 0;
 	data->keycode_keyboard = KEY_ONE;
 	data->bool_space = 0;
+	data->exe_color_scheme = set_color_one;
+}
+
+void	init_julia(t_data *data, char **argv, int argc)
+{
+
+	if (argc == 4 && allowed_string(argv[2]) && allowed_string(argv[3]))
+	{
+		printf("Test\n");
+		data->complex.c_r = ft_atof(argv[2]);
+		data->complex.c_i = ft_atof(argv[3]);
+	}
+	else
+	{
+		printf("test\n");
+		data->complex.c_r = -.8;
+		data->complex.c_i = 0.156;
+	}
+	printf("cr : %lf\tci : %lf\n", data->complex.c_r, data->complex.c_i);
 }
 
 void	init_hook(t_data *data)
@@ -70,13 +86,8 @@ void	init_hook(t_data *data)
 
 void	init(t_data *data, char **argv, int argc)
 {
-	t_fp_fractal_set	exe_fractal;
-
-	if (argc > 2)
-		exit_error(ERR_ARG_HIGH);
-	else if (argc < 2)
-		exit_error(ERR_ARG_LOW);
-	data->exe_fractal = get_set(data, argv);
+	parse_args(data, argc, argv);
+	data->exe_fractal = get_set(argv);
 	if (!data->exe_fractal)
 		exit_error(ERR_NAME);
 	data->program_name = argv[1];

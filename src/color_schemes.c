@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 15:36:26 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/01 19:21:40 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/02 16:00:26 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,9 @@ int	mapping_color(unsigned int index)
 	return map[i];
 }
 
-void	color_interpolation(t_data *data, __uint16_t index, unsigned x, unsigned y)
+void	color_interpolation(t_data *data, int index, unsigned x, unsigned y)
 {
 	int				final_value;
-	int				begin_value;
 	unsigned char	r;
 	unsigned char	g;
 	unsigned char	b;
@@ -53,24 +52,29 @@ void	color_interpolation(t_data *data, __uint16_t index, unsigned x, unsigned y)
 	g = get_g(0x9966FF);
 	b = get_b(0x9966FF);
 
-	begin_value = 0X0000FF;
 	final_value = 0xEE23E8;
 	r = (final_value - r) * index / data->complex.max_iteration + r;
 	g = (final_value - g) * index / data->complex.max_iteration + g;
 	b = (final_value - b) * index / data->complex.max_iteration + b;
 	my_mlx_pixel_put(&data->img, x, y, create_trgb(0, r, g, b));
-
 }
 
 /*	Use here a function pointer defined in t_data and initialise it in <init.c>  */
-void	set_color_scheme(t_data *data, __uint16_t index, unsigned x, unsigned y)
+int	set_color_one(t_data *data, int index, unsigned x, unsigned y)
 {
-	if (data->keycode_keyboard == KEY_ONE)
-		// data->exe_color_scheme = ...
-		my_mlx_pixel_put(&data->img, x, y, mapping_color(index));
-// 	else if (data->keycode_keyboard == KEY_TWO)
-// 		my_mlx_pixel_put(&data->img, x, y,
-// 			create_trgb(0, 0, index * 321 / data->complex.max_iteration, 0));
-// 	else if (data->keycode_keyboard == KEY_THREE)
-// 		color_interpolation(data, index, x, y);
+	my_mlx_pixel_put(&data->img, x, y, mapping_color(index));
+	return (21);
+}
+
+int	set_color_two(t_data *data, int index, unsigned x, unsigned y)
+{
+	my_mlx_pixel_put(&data->img, x, y,
+		create_trgb(0, 0, index * 321 / data->complex.max_iteration, 0));
+	return (21);
+}
+
+int	set_color_three(t_data *data, int index, unsigned x, unsigned y)
+{
+	color_interpolation(data, index, x, y);
+	return (21);
 }

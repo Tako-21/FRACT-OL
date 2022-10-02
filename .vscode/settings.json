@@ -17,6 +17,8 @@
 		"ranges": "c",
 		"span": "c",
 		"unistd.h": "c",
-		"set.h": "c"
+		"set.h": "c",
+		"error.h": "c",
+		"utils.h": "c"
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_set_and_hook.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 16:11:00 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/24 21:08:04 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/02 16:01:38 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 #include "hook.h"
 #include "utils.h"
 
-t_fp_fractal_set	get_set(t_data *data, char **argv)
+t_fp_fractal_set	get_set(char **argv)
 {
+	__uint8_t		index;
 	static t_op_set	op_set [] = {
 	{"Mandelbrot", mandelbrot_set},
 	{"Multibrot", multibrot_set},
 	{"Julia", julia_set},
 	{NULL, NULL},
 	};
-	__uint8_t		index;
 
 	index = 0;
 	while (op_set[index].fractal_set)

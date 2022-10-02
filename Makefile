@@ -18,9 +18,12 @@ SRCS = $(addprefix $(DSRC),\
 		exit_error.c\
 		color_schemes.c\
 		get_set_and_hook.c\
+		parse_args.c\
+		utils2.c\
 		key_hook.c\
 		shifting.c\
 		dynamic_julia.c\
+		get_color_scheme.c\
 		handle_color.c\
 		iteration_mandelbrot.c\
 		utils.c\

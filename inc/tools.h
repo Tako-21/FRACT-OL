@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:39:36 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/01 19:21:26 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/02 21:23:19 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@
 # define MULTIBROT	1
 # define JULIA		2
 
+/*	To prevent integer overflow in expression of type ‘int’  */
+# define INT_OVERFLOW 2147483648
+
 /*	Definition of the boolean type  */
 typedef enum e_bool
 {
@@ -68,19 +71,22 @@ typedef struct s_img {
 	int		endian;
 }			t_img;
 
+/*	Required to initialize complex plane.  */
 typedef struct s_complex {
-	long double		max_r;
-	long double		min_r;
-	long double		max_i;
-	long double		min_i;
-	long double		z_r;
-	long double		z_i;
-	long double		c_r;
-	long double		c_i;
-	long double		power;
+	double		max_r;
+	double		min_r;
+	double		max_i;
+	double		min_i;
+	double		z_r;
+	double		z_i;
+	double		c_r;
+	double		c_i;
+	double		power;
 	__uint16_t		max_iteration;
 }	t_complex;
 
+/*	Required for the dynamic Julia set to remember the last
+	position of the mouse  */
 typedef struct s_mouse {
 	int	last_x;
 	int	last_y;
@@ -103,12 +109,19 @@ typedef struct s_op_set
 	t_fp_fractal_set	fp_op;
 }						t_op_set;
 
+/*	Array of correspondence between keycode and color scheme
+	corresponding  */
+typedef struct s_op_color_scheme
+{
+	int					keycode;
+	t_fp_color_scheme	fp_color_scheme;
+}						t_op_color_scheme;
+
 /* Definition of the mlx_instance structure and the data structure  */
 typedef struct s_data {
 	void				*mlx;
 	void				*win;
 	char				*program_name;
-	char				release;
 	int					keycode_mouse;
 	int					keycode_esc;
 	int					keycode_keyboard;

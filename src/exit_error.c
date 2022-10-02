@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   exit_error.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:18:58 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/09/24 20:56:55 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/02 17:43:26 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "exit_error.h"
+#include "error.h"
 #include "utils.h"
 #include <unistd.h>
 

@@ -27,9 +27,12 @@ int		create_trgb(unsigned char t, unsigned char r,
 			unsigned char g, unsigned char b);
 
 /*	Color schemes  */
+void	get_color_scheme(t_data *data);
 int		mapping_color(unsigned int index);
-void	color_interpolation(t_data *data, __uint16_t index, unsigned x, unsigned y);
-void	set_color_scheme(t_data *data, __uint16_t index, unsigned x, unsigned y);
+void	color_interpolation(t_data *data, int index, unsigned x, unsigned y);
+int		set_color_one(t_data *data, int index, unsigned x, unsigned y);
+int		set_color_two(t_data *data, int index, unsigned x, unsigned y);
+int		set_color_three(t_data *data, int index, unsigned x, unsigned y);
 void	my_mlx_pixel_put(t_img *data, int x, int y, unsigned int color);
 
 #endif

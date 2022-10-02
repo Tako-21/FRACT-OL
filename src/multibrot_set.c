@@ -18,22 +18,7 @@
 #include <math.h>
 #include <stdio.h>
 
-static	long double	power_(long double n, long double p)
-{
-	long double	result;
-
-	result = 1;
-	if (p < 0)
-		return (0);
-	while (p > 0)
-	{
-		result *= n;
-		p--;
-	}
-	return (result);
-}
-
-static long double	get_z_r(t_data *data)
+static double	get_z_r(t_data *data)
 {
 	long double	z_r;
 
@@ -44,7 +29,7 @@ static long double	get_z_r(t_data *data)
 	return (z_r);
 }
 
-static long double	get_z_i(t_data *data, long double tmp_z_r)
+static double	get_z_i(t_data *data, long double tmp_z_r)
 {
 	long double	z_i;
 
@@ -78,7 +63,7 @@ void	is_in_multibrot_set(t_data *data, unsigned int x, unsigned int y)
 	if (index == data->complex.max_iteration)
 		my_mlx_pixel_put(&data->img, x, y, BLACK);
 	else
-		set_color_scheme(data, index, x, y);
+		data->exe_color_scheme(data, index, x, y);
 }
 
 int	multibrot_set(t_data *data)
