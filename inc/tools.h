@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:39:36 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/02 21:23:19 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/05 20:32:25 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,9 @@
 # define KEY_THREE 65435
 
 /* Window dimension values  */
-# define WIDTH 600 // Largeur de la fentre
-# define HEIGHT 600 // Hauteur de la fenetre
+# define WIDTH 900 // Largeur de la fentre
+# define HEIGHT 900 // Hauteur de la fenetre
 
-/*	Code for fractal set  */
-# define MANDELBROT	0
-# define MULTIBROT	1
-# define JULIA		2
 
 /*	To prevent integer overflow in expression of type ‘int’  */
 # define INT_OVERFLOW 2147483648
@@ -73,15 +69,15 @@ typedef struct s_img {
 
 /*	Required to initialize complex plane.  */
 typedef struct s_complex {
-	double		max_r;
-	double		min_r;
-	double		max_i;
-	double		min_i;
-	double		z_r;
-	double		z_i;
-	double		c_r;
-	double		c_i;
-	double		power;
+	double			max_r;
+	double			min_r;
+	double			max_i;
+	double			min_i;
+	double			z_r;
+	double			z_i;
+	double			c_r;
+	double			c_i;
+	double			power;
 	__uint16_t		max_iteration;
 }	t_complex;
 

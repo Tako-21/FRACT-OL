@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WINDOW_MANAGEMENT_H
-# define WINDOW_MANAGEMENT_H
+#ifndef WINDOW_H
+# define WINDOW_H
 
 # include <tools.h>
 

@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:59:53 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/02 21:07:18 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/05 20:21:58 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,20 +54,18 @@ void	init_complex_plane(t_data *data)
 
 void	init_julia(t_data *data, char **argv, int argc)
 {
-
 	if (argc == 4 && allowed_string(argv[2]) && allowed_string(argv[3]))
 	{
-		printf("Test\n");
 		data->complex.c_r = ft_atof(argv[2]);
 		data->complex.c_i = ft_atof(argv[3]);
 	}
-	else
+	else if (argc == 2)
 	{
-		printf("test\n");
 		data->complex.c_r = -.8;
 		data->complex.c_i = 0.156;
 	}
-	printf("cr : %lf\tci : %lf\n", data->complex.c_r, data->complex.c_i);
+	else
+		return (exit_error(ERR_NAME));
 }
 
 void	init_hook(t_data *data)
@@ -77,7 +75,6 @@ void	init_hook(t_data *data)
 		mlx_hook(data->win, 6, 1L << 6, left_click_press, data);
 		mlx_hook(data->win, 5, 1L << 3, left_click_release, data);
 	}
-	// mlx_hook(data->win, KeyPress, KeyPressMask, handle_keypress, data);
 	mlx_hook(data->win, DestroyNotify, NoEventMask, close_window_cross, data);
 	mlx_mouse_hook(data->win, zoom_mouse_hook, data);
 	mlx_loop_hook(data->mlx, dynamic_multibrot, data);

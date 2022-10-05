@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 16:01:00 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/02 16:40:28 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/05 12:23:49 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 int	left_click_press(int actual_x, int actual_y, t_data *data)
 {
 	double	diff_vector;
+
 	(void)actual_y;
 	if (data->keycode_mouse == LEFT_CLICK)
 	{

@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:41:36 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/02 16:05:18 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/05 12:23:23 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,3 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, unsigned int color)
 	dst = data->addr + (y * data->line_length + x * 4);
 	*(unsigned int *)dst = color;
 }
-
-

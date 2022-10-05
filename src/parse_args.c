@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 16:46:22 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/02 19:36:30 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/05 19:41:30 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,8 @@ t_bool	allowed_string(char *str)
 		return (FALSE);
 	if (str[0] == '-')
 		i++;
-	if (ft_isdigit(str[0]) && str[1] == '.')
+	if (ft_isdigit(str[i]) && str[i + 1] == '.')
 		i += 2;
-	printf("str : %s\n", str);
 	while (str[i])
 	{
 		if (!(ft_isdigit(str[i])))

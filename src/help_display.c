@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_error.c                                       :+:      :+:    :+:   */
+/*   help_display.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 13:18:58 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/05 20:45:39 by mmeguedm         ###   ########.fr       */
+/*   Created: 2022/10/05 19:55:48 by mmeguedm          #+#    #+#             */
+/*   Updated: 2022/10/05 20:51:01 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init.h"
-#include "error.h"
 #include "utils.h"
-#include <unistd.h>
 
-void	exit_error(int sig_err)
+
+
+void	print_help(void)
 {
-	const char	*map_error[ERR__LENGHT] = {
-		"Input error. Let's see together how to proceed.\n\n",
-		"Too few arguments. Let's see together how to proceed.\n\n",
-		"Too many arguments. Let's see together how to proceed.\n\n"
-	};
-
-	ft_putstr_fd((char *)map_error[sig_err], STDERR_FILENO);
-	print_help();
-	exit(EXIT_FAILURE);
+	ft_putstr_fd("*-----------------------------------------*\n", 1);
+	ft_putstr_fd("|                 \033[1;30mFRACT'OL\033[0m                |\n", 1);
+	ft_putstr_fd("*-----------------------------------------*\n", 1);
+	ft_putstr_fd("How it works ?\n", 1);
+	ft_putstr_fd("You can choose between three fractals :\n", 1);
+	ft_putstr_fd("\t\033[0;36mMandelbrot\n\tJulia\n\tMultibrot\033[0m\n", 1);
 }

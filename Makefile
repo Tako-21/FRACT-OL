@@ -1,4 +1,4 @@
-NAME = fract-ol
+NAME = fractol
 
 CC		= cc
 INC_PATH = inc/
@@ -17,7 +17,8 @@ SRCS = $(addprefix $(DSRC),\
 		init.c\
 		exit_error.c\
 		color_schemes.c\
-		get_set_and_hook.c\
+		help_display.c\
+		get_set.c\
 		parse_args.c\
 		utils2.c\
 		key_hook.c\
