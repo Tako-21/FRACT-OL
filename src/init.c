@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:59:53 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/08 18:30:05 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/08 21:03:57 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	init_complex_plane(t_data *data)
 	data->keycode_esc = 0;
 	data->keycode_keyboard = KEY_ONE;
 	data->bool_space = 0;
+	data->color = 40;
 	data->exe_color_scheme = set_color_one;
 }
 
@@ -58,7 +59,6 @@ void	init_julia(t_data *data, char **argv, int argc)
 	{
 		data->complex.c_r = ft_atof_perso(argv[2]);
 		data->complex.c_i = ft_atof_perso(argv[3]);
-		printf("c_r : %lf\tc_i : %lf\n", data->complex.c_r, data->complex.c_i);
 	}
 	else if (argc == 2)
 	{
@@ -88,6 +88,7 @@ void	init(t_data *data, char **argv, int argc)
 	data->exe_fractal = get_set(argv);
 	if (!data->exe_fractal)
 		exit_error(ERR_NAME);
+	print_controls();
 	data->program_name = argv[1];
 	init_mlx(data);
 	init_complex_plane(data);

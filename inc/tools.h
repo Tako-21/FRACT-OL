@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:39:36 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/05 20:32:25 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/08 20:57:53 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ typedef struct s_data {
 	int					keycode_mouse;
 	int					keycode_esc;
 	int					keycode_keyboard;
+	unsigned int		color;
 	unsigned char		bool_space;
 	t_fp_fractal_set	exe_fractal;
 	t_fp_init_hook		exe_hook;

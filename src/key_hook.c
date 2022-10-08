@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:47:57 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/02 16:26:18 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/08 21:19:40 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static	t_movement	*create_move_storage(void)
 	{KEY_PG_UP, more_iteration},
 	{KEY_PG_DOWN, less_iteration},
 	{KEY_ESC, close_window_key_esc},
+	{KEY_PLUS, next_color_scheme},
+	{KEY_MINUS, previous_color_scheme},
 	{0, NULL},
 	};
 
@@ -57,6 +59,7 @@ int	move_key_hook(unsigned int keycode, t_data *data)
 {
 	static t_movement	*move_storage;
 
+	printf("keycode : %d\n", keycode);
 	data->keycode_keyboard = keycode;
 	get_color_scheme(data);
 	if (keycode == KEY_SPACE)

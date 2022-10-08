@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window_management.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:41:36 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/05 12:23:23 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/08 20:45:41 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,24 @@
 #include "set.h"
 #include <stdlib.h>
 
-int	close_window_cross(t_data *mlx)
+static void	free_mlx(t_data *data)
 {
-	mlx_destroy_window(mlx->mlx, mlx->win);
+	mlx_destroy_window(data->mlx, data->win);
+	mlx_destroy_image(data->mlx, data->img.img);
+	mlx_destroy_display(data->mlx);
+	free(data->mlx);
+}
+
+int	close_window_cross(t_data *data)
+{
+	free_mlx(data);
 	exit(EXIT_SUCCESS);
 }
 
 int	close_window_key_esc(t_data *data, double uncessary)
 {
 	(void)uncessary;
-	mlx_destroy_window(data->mlx, data->win);
+	free_mlx(data);
 	exit(EXIT_SUCCESS);
 	return (21);
 }

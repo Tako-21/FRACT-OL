@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 19:55:48 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/08 20:05:55 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/08 20:33:14 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,11 @@ void	print_help(void)
 	ft_putstr_fd("\t 0.285  0.01\n", 1);
 	ft_putstr_fd("\t 0.45   0.1428\n", 1);
 	ft_putstr_fd("\t-0.835 -0.2321\n\n", 1);
+	ft_putstr_fd("Have fun :)\n\n", 1);
+
 }
 
-void	print_move(void)
+void	print_controls(void)
 {
 	ft_putstr_fd("\033[1;36m*-----------------------------------------*\n", 1);
 	ft_putstr_fd("|                 \033[1;96mCONTROLS\033[1;36m                |\n", 1);
@@ -59,6 +61,5 @@ void	print_move(void)
 	ft_putstr_fd("Only for Julia.\n", 1);
 	ft_putstr_fd("\033[0;36mleft click.\t\t\033[0mmodify the Julia set.\n\n", 1);
 	ft_putstr_fd("Only for Multibrot.\n", 1);
-	ft_putstr_fd("\033[0;36mspace.\t\t\t\033[0menable/disable animation.\n\n", 1);
-
+	ft_putstr_fd("\033[0;36mspace.\t\t\t\033[0menable/disable animation.\n", 1);
 }

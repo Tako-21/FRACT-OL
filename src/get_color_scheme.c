@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_color_scheme.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 14:44:16 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/05 12:24:53 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/08 21:29:08 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,22 @@ void	get_color_scheme(t_data *data)
 			data->exe_color_scheme = color_scheme->fp_color_scheme;
 		color_scheme++;
 	}
+}
+
+#include <stdio.h>
+
+int	next_color_scheme(t_data *data, double uncessary)
+{
+	(void)uncessary;
+	if (data->color < INT_OVERFLOW - 20)
+		data->color += 20;
+	return (21);
+}
+
+int	previous_color_scheme(t_data *data, double uncessary)
+{
+	(void)uncessary;
+	if (data->color > 20)
+		data->color -= 20;
+	return (21);
 }

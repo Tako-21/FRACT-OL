@@ -34,5 +34,7 @@ int		set_color_one(t_data *data, int index, unsigned x, unsigned y);
 int		set_color_two(t_data *data, int index, unsigned x, unsigned y);
 int		set_color_three(t_data *data, int index, unsigned x, unsigned y);
 void	my_mlx_pixel_put(t_img *data, int x, int y, unsigned int color);
+int		next_color_scheme(t_data *data, double uncessary);
+int		previous_color_scheme(t_data *data, double uncessary);
 
 #endif
