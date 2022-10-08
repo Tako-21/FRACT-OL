@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:59:53 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/05 20:21:58 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/08 18:30:05 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,9 @@ void	init_julia(t_data *data, char **argv, int argc)
 {
 	if (argc == 4 && allowed_string(argv[2]) && allowed_string(argv[3]))
 	{
-		data->complex.c_r = ft_atof(argv[2]);
-		data->complex.c_i = ft_atof(argv[3]);
+		data->complex.c_r = ft_atof_perso(argv[2]);
+		data->complex.c_i = ft_atof_perso(argv[3]);
+		printf("c_r : %lf\tc_i : %lf\n", data->complex.c_r, data->complex.c_i);
 	}
 	else if (argc == 2)
 	{

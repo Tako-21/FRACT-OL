@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:48:39 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/02 16:04:37 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/08 16:23:08 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int					multibrot_hook(int keycode, t_data *data);
 int					zoom_mouse_hook(int keycode, int x, int y, t_data *data);
 int					julia_hook(int keycode, int x, int y, t_data *data);
 
-/*	Required to modify in real time the C Julia's constant.  */
+/*	Required to modify in real time the Julia set.  */
 int					left_click_press(int actual_x, t_data *data);
 int					left_click_release(t_data *data);
 

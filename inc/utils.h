@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 20:41:57 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/02 21:10:00 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/08 17:59:25 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 
 t_bool			ft_strcmp(const char *s1, const char *s2);
 void			ft_putstr_fd(char *s, int fd);
-long			ft_atoi(const char *str);
+double			ft_atoi(const char *str);
 double			ft_atof(const char *str);
 int				ft_strlen(char *str);
 int				ft_isdigit(int c);
+double			ft_atof_perso(char *str);
 #endif
