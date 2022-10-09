@@ -6,12 +6,13 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 21:04:48 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/08 18:30:00 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/09 19:28:29 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 #include "limits.h"
+#include "error.h"
 
 double	ft_atoi(const char *str)
 {
@@ -34,34 +35,11 @@ double	ft_atoi(const char *str)
 	{
 		res = res * 10 + (str[i] - 48);
 		if (res * neg > INT_MAX || res * neg < INT_MIN)
-			return (INT_OVERFLOW);
+			return (exit_error(ERR_INT_OVERFLOW), 21);
 		i++;
 	}
 	return (res * neg);
 }
-
-// double	ft_atof(const char *str)
-// {
-// 	double	res;
-// 	double	res2;
-// 	char	*c;
-// 	int		len;
-
-// 	c = (char *)str;
-// 	res = (double)ft_atoi(c);
-// 	while (*c && *c != '.')
-// 		c++;
-// 	if (*c == '.')
-// 		c++;
-// 	res2 = (double)ft_atoi(c);
-// 	len = ft_strlen(c);
-// 	while (len--)
-// 		res2 /= 10;
-// 	if (res >= 0)
-// 		return (res + res2);
-// 	else
-// 		return (res - res2);
-// }
 
 double	ft_atof_perso(char *str)
 {

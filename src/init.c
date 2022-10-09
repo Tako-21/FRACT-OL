@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:59:53 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/08 21:03:57 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/09 19:11:05 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,18 @@
 void	init_mlx(t_data *data)
 {
 	data->mlx = mlx_init();
+	if (!data->mlx)
+		return (exit_error(ERR_MLX));
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "fract-ol");
+	if (!data->win)
+		return (exit_error(ERR_MLX));
 	data->img.img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	if (!data->img.img)
+		return (exit_error(ERR_MLX));
 	data->img.addr = mlx_get_data_addr(data->img.img, &data->img.bits_per_pixel,
 			&data->img.line_length, &data->img.endian);
+	if (!data->img.addr)
+		return (exit_error(ERR_MLX));
 }
 
 void	init_complex_plane(t_data *data)
@@ -88,10 +96,10 @@ void	init(t_data *data, char **argv, int argc)
 	data->exe_fractal = get_set(argv);
 	if (!data->exe_fractal)
 		exit_error(ERR_NAME);
-	print_controls();
 	data->program_name = argv[1];
 	init_mlx(data);
 	init_complex_plane(data);
 	init_hook(data);
 	data->exe_fractal(data);
+	print_controls();
 }

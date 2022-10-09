@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 14:47:57 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/08 21:19:40 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/09 18:29:20 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int	move_key_hook(unsigned int keycode, t_data *data)
 {
 	static t_movement	*move_storage;
 
-	printf("keycode : %d\n", keycode);
 	data->keycode_keyboard = keycode;
 	get_color_scheme(data);
 	if (keycode == KEY_SPACE)

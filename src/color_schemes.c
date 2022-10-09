@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 15:36:26 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/08 20:58:23 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/09 19:28:12 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,29 +39,6 @@ int	mapping_color(unsigned int index)
 	return (map[i]);
 }
 
-// void	color_interpolation(t_data *data, int index, unsigned x, unsigned y)
-// {
-// 	int	start_rgb[3];
-// 	int	final_color[3];
-// 	int	start_color = 0x00FF80;
-
-// 	start_rgb[0] = get_r(0x00FF80);
-// 	start_rgb[1] = get_g(0x00FF80);
-// 	start_rgb[2] = get_b(0x00FF80);
-// 	final_color[0] = get_r(0xF5F5DC);
-// 	final_color[1] = get_g(0xF5F5DC);
-// 	final_color[2] = get_b(0xF5F5DC);
-// 	start_rgb[0] = (final_color[0] - start_rgb[0])
-// 		* index / data->complex.max_iteration + 3 + start_rgb[0];
-// 	start_rgb[1] = (final_color[1] - start_rgb[1])
-// 		* index / data->complex.max_iteration + 3 + start_rgb[1];
-// 	start_rgb[2] = (final_color[2] - start_rgb[2])
-// 		* index / data->complex.max_iteration + 3 + start_rgb[2];
-// 	my_mlx_pixel_put(&data->img, x, y,
-// 		create_trgb(0, start_rgb[0], start_rgb[1], start_rgb[2]));
-// }
-
-
 void	color_interpolation(t_data *data, int index, unsigned x, unsigned y)
 {
 	int				final_value;
@@ -73,39 +50,13 @@ void	color_interpolation(t_data *data, int index, unsigned x, unsigned y)
 	r = get_r(0x9966FF);
 	g = get_g(0x9966FF);
 	b = get_b(0x9966FF);
-
 	begin_value = 0X0000FF;
 	final_value = 0xEE23E8;
 	r = (final_value - r) * index / data->color + r;
 	g = (final_value - g) * index / data->color + g;
 	b = (final_value - b) * index / data->color + b;
 	my_mlx_pixel_put(&data->img, x, y, create_trgb(0, r, g, b));
-
 }
-
-// void	color_interpolation(t_data *data, int index, unsigned x, unsigned y)
-// {
-// 	int	start_rgb[3];
-// 	int	end_rgb[3];
-// 	int startcolor;
-// 	int endcolor;
-
-// 	startcolor = RED;
-// 	endcolor = BLUE;
-// 	start_rgb[0] = ((startcolor >> 16) & 0xFF);
-// 	start_rgb[1] = ((startcolor >> 8) & 0xFF);
-// 	start_rgb[2] = ((startcolor >> 0) & 0xFF);
-// 	end_rgb[0] = ((endcolor >> 16) & 0xFF);
-// 	end_rgb[1] = ((endcolor >> 8) & 0xFF);
-// 	end_rgb[2] = ((endcolor >> 0) & 0xFF);
-// 	start_rgb[0] = (end_rgb[0] - start_rgb[0]) * index / data->complex.max_iteration + start_rgb[0];
-// 	start_rgb[1] = (end_rgb[1] - start_rgb[1]) * index / data->complex.max_iteration + start_rgb[1];
-// 	start_rgb[2] = (end_rgb[2] - start_rgb[2]) * index / data->complex.max_iteration + start_rgb[2];
-
-// 		my_mlx_pixel_put(&data->img, x, y,
-// 			create_trgb(0, start_rgb[0], start_rgb[1], start_rgb[2]));
-// }
-
 
 int	set_color_one(t_data *data, int index, unsigned x, unsigned y)
 {

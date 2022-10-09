@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmeguedm <mmeguedm@student42.fr>           +#+  +:+       +#+        */
+/*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 13:19:11 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/02 19:07:09 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/09 19:15:31 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ typedef enum e_sig_err {
 	ERR_NAME,
 	ERR_ARG_LOW,
 	ERR_ARG_HIGH,
+	ERR_MLX,
+	ERR_INT_OVERFLOW,
 	ERR__LENGHT
 }	t_sig_err;
 

@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:39:36 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/08 20:57:53 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/09 18:58:43 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@
 /* Window dimension values  */
 # define WIDTH 900 // Largeur de la fentre
 # define HEIGHT 900 // Hauteur de la fenetre
-
 
 /*	To prevent integer overflow in expression of type ‘int’  */
 # define INT_OVERFLOW 2147483648

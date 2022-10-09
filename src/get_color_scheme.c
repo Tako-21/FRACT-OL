@@ -6,7 +6,7 @@
 /*   By: mmeguedm <mmeguedm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 14:44:16 by mmeguedm          #+#    #+#             */
-/*   Updated: 2022/10/08 21:29:08 by mmeguedm         ###   ########.fr       */
+/*   Updated: 2022/10/09 19:28:41 by mmeguedm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ void	get_color_scheme(t_data *data)
 		color_scheme++;
 	}
 }
-
-#include <stdio.h>
 
 int	next_color_scheme(t_data *data, double uncessary)
 {
